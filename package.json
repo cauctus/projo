@@ -1,0 +1,45 @@
+{
+  "name": "projo",
+  "version": "0.0.0",
+  "description": "L'application de scroring pour le théatre d'improvisation",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cauctus/projo"
+  },
+  "funding": "https://github.com/sponsors/CorentinTh",
+  "author": "Corentin Th <corentin.thomasset74@gmail.com> (https://github.com/CorentinTh)",
+  "homepage": "https://projo.cauctus.net",
+  "bugs": "https://github.com/CorentinTh/cauctus/projo",
+  "keywords": [
+    "impro",
+    "improvisation",
+    "improvisational-theater",
+    "theater",
+    "webapp",
+    "scrore",
+    "scoring",
+    "dashboard"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "piesocket-js": "^1.4.0",
+    "pinia": "^2.0.3",
+    "pinia-shared-state": "^0.1.1",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "naive-ui": "^2.20.2",
+    "typescript": "^4.4.3",
+    "vfonts": "^0.1.0",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  }
+}
