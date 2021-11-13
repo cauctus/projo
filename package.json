@@ -25,7 +25,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "piesocket-js": "^1.4.0",
@@ -35,7 +36,13 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/eslint-config-typescript": "^9.0.1",
+    "eslint": "^8.2.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "less": "^4.1.2",
     "naive-ui": "^2.20.2",
     "typescript": "^4.4.3",
     "vfonts": "^0.1.0",

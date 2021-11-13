@@ -1,21 +1,28 @@
 import { defineStore } from 'pinia';
 
+const colors = ['#4FB233', '#335FFF', '#4FB233', '#D92149', '#FFAC26'];
+
 export const useDashboardStore = defineStore('dashboard', {
   state: () => ({
     teamLeft: {
-      name: 'Equipe 1',
-      color: '#335FFF',
+      name: 'TTI',
+      color: colors[3],
       score: 0,
-      penality: 0,
+      penality: 2,
     },
     teamRight: {
-      name: 'Equipe 2',
-      color: '#FFAC26',
+      name: 'Le CLAP',
+      color: colors[2],
       score: 0,
-      penality: 0,
+      penality: 2,
+    },
+    globalTimer: {
+      value: 90 * 60,
+      duration: 90 * 60,
+      intervalId: -1,
     },
     timer: {
-      value: 0,
+      value: 3 * 60,
       duration: 3 * 60,
       intervalId: -1,
     },

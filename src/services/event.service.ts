@@ -1,8 +1,9 @@
 const BROADCAST_CHANNEL_NAME = 'projo-bc';
 
+type Callback = (...args: unknown[]) => void;
 class EventService {
   private channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
-  private events: { [key: string]: Function[] } = {};
+  private events: { [key: string]: Callback[] } = {};
 
   constructor() {
     this.channel.onmessage = ({ data }) => {
@@ -15,7 +16,7 @@ class EventService {
     (this.events[event] ?? []).forEach((cb) => cb(...args));
   }
 
-  on(event: string, cb: Function) {
+  on(event: string, cb: Callback) {
     (this.events[event] ??= []).push(cb);
 
     return () => (this.events[event] = (this.events[event] || []).filter((i) => i !== cb));
