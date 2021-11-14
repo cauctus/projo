@@ -2,25 +2,25 @@
   <n-config-provider :theme="darkTheme">
     <div class="fullpage-centered">
       <n-card class="main-card" :bordered="false" content-style="padding: 0;">
-        <n-space class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
+        <n-space v-show="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
         <n-space class="teams-wrapper" justify="space-between" align="center">
           <team-info :team="store.teamLeft" :max-penality="store.maxPenality" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
-            <div class="timer global-timer">
-              {{ formatTime(store.globalTimer.value) }}
+            <div v-show="store.displayGlobalTimer" class="timer global-timer">
+              {{ formatTimer(store.globalTimer, { showHours: true }) }}
             </div>
 
             <div class="timer current-timer">
-              {{ formatTime(store.timer.value) }}
+              {{ formatTimer(store.timer) }}
             </div>
           </n-space>
 
           <team-info :team="store.teamRight" :max-penality="store.maxPenality" />
         </n-space>
 
-        <div class="footer">
+        <div v-show="store.displayFooter" class="footer">
           <div class="footer-left">
             <div><span>Type :</span> {{ store.type }}</div>
             <div><span>Categorie :</span> {{ store.category }}</div>
@@ -45,9 +45,9 @@
 <script lang="ts" setup>
 import { useEventStore } from '@/stores/event.store';
 import { useDashboardStore } from '@/stores/dashboard.store';
-import { formatTime } from '@/utils/string';
 import TeamInfo from './components/TeamInfo.vue';
 import { darkTheme } from 'naive-ui';
+import { formatTimer } from '@/utils/string';
 
 const store = useDashboardStore();
 const eventStore = useEventStore();
@@ -71,6 +71,8 @@ const eventStore = useEventStore();
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   width: 1520px;
   flex: 0 0 auto;
+  // transform: translate(v-bind('store.offsetX'), v-bind('store.offsetY')) scale(v-bind('store.zoom'));
+  transform: scale(v-bind('store.zoom')) translate(calc(v-bind('store.offsetX') * 100vw), calc(v-bind('store.offsetY') * 100vh));
 
   .header {
     padding: 20px 0 12px;

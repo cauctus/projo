@@ -18,9 +18,17 @@ import {
   NCollapseTransition,
   NGrid,
   NGridItem,
+  NPopconfirm,
+  NSlider,
+  NCollapse,
+  NCollapseItem,
 } from 'naive-ui';
 
 const components = [
+  NCollapse,
+  NCollapseItem,
+  NSlider,
+  NPopconfirm,
   NGrid,
   NGridItem,
   NButton,

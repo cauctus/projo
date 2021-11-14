@@ -31,6 +31,7 @@
   "dependencies": {
     "piesocket-js": "^1.4.0",
     "pinia": "^2.0.3",
+    "pinia-plugin-persistedstate": "^1.0.2",
     "pinia-shared-state": "^0.1.1",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
