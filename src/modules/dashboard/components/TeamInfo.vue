@@ -1,24 +1,18 @@
 <script setup lang="ts">
-import { useDashboardStore } from '../../../stores/dashboard.store';
-import { TeamInfo } from '../../../types/TeamInfo';
+import { TeamInfo } from '../TeamInfo.model';
 import { defineProps } from 'vue';
 
-const store = useDashboardStore();
-const props = defineProps<{ team: TeamInfo }>();
+const props = defineProps<{ team: TeamInfo; maxPenality: number }>();
 </script>
 
 <template>
   <div class="team">
     <div class="name-wrapper">
-      <n-h1 :style="{ borderColor: props.team.color }">
-        {{ props.team.name }}
-      </n-h1>
+      <n-h1>{{ props.team.name }}</n-h1>
     </div>
-    <n-space class="score" justify="center">
-      {{ props.team.score }}
-    </n-space>
+    <n-space class="score" justify="center">{{ props.team.score }}</n-space>
     <n-space class="penalities-wrapper" justify="space-around" align="center">
-      <div v-for="index in store.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
+      <div v-for="index in props.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
     </n-space>
   </div>
 </template>

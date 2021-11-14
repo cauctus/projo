@@ -8,13 +8,13 @@ export const useDashboardStore = defineStore('dashboard', {
       name: 'TTI',
       color: colors[3],
       score: 0,
-      penality: 2,
+      penality: 0,
     },
     teamRight: {
       name: 'Le CLAP',
       color: colors[2],
       score: 0,
-      penality: 2,
+      penality: 0,
     },
     globalTimer: {
       value: 90 * 60,

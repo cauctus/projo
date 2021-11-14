@@ -1,51 +1,56 @@
 <template>
-  <div class="fullpage-centered">
-    <n-card class="main-card" :bordered="false" content-style="padding: 0;">
-      <n-space class="header" justify="center" align="center"> Match d'impro </n-space>
+  <n-config-provider :theme="darkTheme">
+    <div class="fullpage-centered">
+      <n-card class="main-card" :bordered="false" content-style="padding: 0;">
+        <n-space class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
-      <n-space class="teams-wrapper" justify="space-between" align="center">
-        <team-info :team="store.teamLeft" />
+        <n-space class="teams-wrapper" justify="space-between" align="center">
+          <team-info :team="store.teamLeft" :max-penality="store.maxPenality" />
 
-        <n-space class="middle-wrapper" vertical align="center" :wrap="false">
-          <div class="timer global-timer">
-            {{ formatTime(store.globalTimer.value) }}
-          </div>
+          <n-space class="middle-wrapper" vertical align="center" :wrap="false">
+            <div class="timer global-timer">
+              {{ formatTime(store.globalTimer.value) }}
+            </div>
 
-          <div class="timer current-timer">
-            {{ formatTime(store.timer.value) }}
-          </div>
+            <div class="timer current-timer">
+              {{ formatTime(store.timer.value) }}
+            </div>
+          </n-space>
+
+          <team-info :team="store.teamRight" :max-penality="store.maxPenality" />
         </n-space>
 
-        <team-info :team="store.teamRight" />
-      </n-space>
-
-      <div class="footer">
-        <div class="footer-left">
-          <div><span>Type :</span> {{ store.type }}</div>
-          <div><span>Categorie :</span> {{ store.category }}</div>
-        </div>
-        <div class="footer-center">
-          <div class="footer-center-head">Theme</div>
-          <div class="footer-center-theme">
-            {{ store.theme }}
+        <div class="footer">
+          <div class="footer-left">
+            <div><span>Type :</span> {{ store.type }}</div>
+            <div><span>Categorie :</span> {{ store.category }}</div>
+          </div>
+          <div class="footer-center">
+            <div class="footer-center-head">Theme</div>
+            <div class="footer-center-theme">
+              {{ store.theme }}
+            </div>
+          </div>
+          <div class="footer-right">
+            <div>Nb. de personnes :</div>
+            <div>{{ store.playerCount >= 0 ? store.playerCount : 'Illimité' }}</div>
+            <!-- <div><span>Type :</span> {{ store.type }}</div> -->
           </div>
         </div>
-        <div class="footer-right">
-          <div>Nb. de joueurs·euses :</div>
-          <div>{{ store.playerCount >= 0 ? store.playerCount : 'Illimité' }}</div>
-          <!-- <div><span>Type :</span> {{ store.type }}</div> -->
-        </div>
-      </div>
-    </n-card>
-  </div>
+      </n-card>
+    </div>
+  </n-config-provider>
 </template>
 
 <script lang="ts" setup>
+import { useEventStore } from '@/stores/event.store';
 import { useDashboardStore } from '@/stores/dashboard.store';
 import { formatTime } from '@/utils/string';
-import TeamInfo from '../modules/dashboard/components/TeamInfo.vue';
+import TeamInfo from './components/TeamInfo.vue';
+import { darkTheme } from 'naive-ui';
 
 const store = useDashboardStore();
+const eventStore = useEventStore();
 </script>
 
 <style lang="less" scoped>
@@ -58,6 +63,7 @@ const store = useDashboardStore();
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  background-color: #101014;
 }
 
 .main-card {

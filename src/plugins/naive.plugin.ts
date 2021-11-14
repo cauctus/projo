@@ -1,5 +1,44 @@
-import { create, NButton, NConfigProvider, NGlobalStyle, NCard, NInput, NColorPicker, NInputNumber, NSpace, NH1, NGrid, NGi } from 'naive-ui';
+import {
+  create,
+  NButton,
+  NConfigProvider,
+  NGlobalStyle,
+  NCard,
+  NInput,
+  NColorPicker,
+  NInputNumber,
+  NSpace,
+  NH1,
+  NForm,
+  NFormItem,
+  NTimePicker,
+  NText,
+  NIcon,
+  NSwitch,
+  NCollapseTransition,
+  NGrid,
+  NGridItem,
+} from 'naive-ui';
 
-const components = [NButton, NConfigProvider, NGlobalStyle, NCard, NInput, NColorPicker, NInputNumber, NSpace, NH1, NGrid, NGi];
+const components = [
+  NGrid,
+  NGridItem,
+  NButton,
+  NConfigProvider,
+  NGlobalStyle,
+  NCard,
+  NInput,
+  NColorPicker,
+  NInputNumber,
+  NSpace,
+  NH1,
+  NForm,
+  NFormItem,
+  NTimePicker,
+  NText,
+  NIcon,
+  NSwitch,
+  NCollapseTransition,
+];
 
 export const naive = create({ components });

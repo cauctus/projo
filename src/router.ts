@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from '/src/pages/index.vue';
 import Controls from '/src/pages/controls.vue';
-import Dashboard from '/src/pages/dashboard.vue';
+import Dashboard from '@/modules/dashboard/dashboard.vue';
 import NotFound from '/src/pages/404.vue';
 
 const routes = [
