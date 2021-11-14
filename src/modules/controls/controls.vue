@@ -79,13 +79,13 @@
                 <n-grid :cols="3">
                   <n-gi :span="2">
                     <n-form-item label="Zoom du dashboard">
-                      <n-slider v-model:value="dashboardStore.zoom" :step="0.05" :min="0" :max="2" :format-tooltip="(v) => `${Math.floor(v * 100)}%`" />
+                      <n-slider v-model:value="dashboardStore.zoom" :step="0.05" :min="0" :max="2" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
                     </n-form-item>
                     <n-form-item label="Décalage horizontal">
-                      <n-slider v-model:value="dashboardStore.offsetX" :step="0.05" :min="-1" :max="1" :format-tooltip="(v) => `${Math.floor(v * 100)}%`" />
+                      <n-slider v-model:value="dashboardStore.offsetX" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
                     </n-form-item>
                     <n-form-item label="Décalage vertical">
-                      <n-slider v-model:value="dashboardStore.offsetY" :step="0.05" :min="-1" :max="1" :format-tooltip="(v) => `${Math.floor(v * 100)}%`" />
+                      <n-slider v-model:value="dashboardStore.offsetY" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
                     </n-form-item>
                   </n-gi>
                   <n-gi>
