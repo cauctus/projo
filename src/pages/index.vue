@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { BrandGithub, ArrowRight, Mail } from '@vicons/tabler';
+import { BrandGithub, ArrowRight, Mail, DeviceTv } from '@vicons/tabler';
 </script>
 
 <template>
@@ -8,11 +8,12 @@ import { BrandGithub, ArrowRight, Mail } from '@vicons/tabler';
       <n-grid-item span="10 600:8 1024:6 1280:4 2000:2" offset="0 600:1 1024:2 1280:3 2000:4" class="card-wrapper">
         <div class="skweded-background" />
         <n-card class="main-card">
-          <n-space align="baseline" justify="space-between">
-            <n-h1>Projo</n-h1>
-            <n-space vertical :size="0" align="end">
-              <div class="subtitle">une solution <a href="https://cauctus.net" target="_blank">cauctus.net</a></div>
+          <n-space align="center" justify="space-between">
+            <n-space align="center">
+              <n-icon size="60" color="#fc466b"><DeviceTv /></n-icon>
+              <n-h1>Projo</n-h1>
             </n-space>
+            <div class="subtitle">une solution <a href="https://cauctus.net" target="_blank">cauctus.net</a></div>
           </n-space>
 
           <div class="content">
