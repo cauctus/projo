@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { BrandGithub, ArrowRight, Mail, DeviceTv } from '@vicons/tabler';
+import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tabler';
 </script>
 
 <template>
@@ -26,17 +26,28 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv } from '@vicons/tabler';
 
           <n-space class="footer" align="center" justify="space-between">
             <div>
+              <router-link to="/about" #="{ navigate, href }" custom>
+                <n-button text style="font-size: 30px; margin-right: 10px" tag="a" :href="href" ghost class="muted" @click="navigate">
+                  <n-icon><InfoSquare /></n-icon>
+                </n-button>
+              </router-link>
+              <!-- <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="/about" class="muted">
+                <n-icon><InfoSquare /></n-icon>
+              </n-button> -->
+              <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="mailto:projo@cauctus.net" class="muted">
+                <n-icon><Mail /></n-icon>
+              </n-button>
               <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="https://github.com/cauctus/projo" target="_blank" class="muted">
                 <n-icon><BrandGithub /></n-icon>
               </n-button>
-              <n-button text style="font-size: 30px" tag="a" href="mailto:projo@cauctus.net" class="muted">
-                <n-icon><Mail /></n-icon>
-              </n-button>
             </div>
-            <n-button color="#f34772" style="color: white" tag="a" href="/controls">
-              Commencer &nbsp;
-              <n-icon><ArrowRight /></n-icon>
-            </n-button>
+
+            <router-link to="/controls" #="{ navigate, href }" custom>
+              <n-button color="#f34772" style="color: white" tag="a" :href="href" type="success" @click="navigate">
+                Commencer &nbsp;
+                <n-icon><ArrowRight /></n-icon>
+              </n-button>
+            </router-link>
           </n-space>
         </n-card>
       </n-grid-item>

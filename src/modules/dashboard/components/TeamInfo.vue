@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { TeamInfo } from '../TeamInfo.model';
+import { Team } from '@/types/Team.model';
 import { defineProps } from 'vue';
 
-const props = defineProps<{ team: TeamInfo; maxPenality: number }>();
+const props = defineProps<{ team: Team; maxPenality: number }>();
 </script>
 
 <template>

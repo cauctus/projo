@@ -1,32 +1,92 @@
 import { Timer, TimerSate } from '@/types/Timers.model';
+import { Team } from '@/types/Team.model';
 import { defineStore } from 'pinia';
+import { reactive, toRefs } from 'vue';
 
 const colors = ['#4FB233', '#335FFF', '#4FB233', '#D92149', '#FFAC26'];
 
-const createTimerSate = (durationMS: number): Timer => ({
-  elapsed: 0,
-  duration: durationMS, // in ms
-  intervalId: -1,
-  state: TimerSate.STOPPED,
-});
+function createTimerStore(partialSate: Partial<Timer>) {
+  const state = reactive(
+    Object.assign(
+      {
+        elapsed: 0,
+        duration: 0, // in ms
+        intervalId: -1,
+        state: TimerSate.STOPPED,
+      },
+      partialSate
+    )
+  );
+
+  function clearInterval() {
+    window.clearInterval(state.intervalId);
+  }
+
+  function stop() {
+    clearInterval();
+    state.elapsed = 0;
+  }
+
+  function pause() {
+    clearInterval();
+  }
+
+  function start() {
+    state.intervalId = window.setInterval(() => {
+      state.elapsed += 1000;
+
+      if (state.elapsed >= state.duration) {
+        pause();
+      }
+    }, 1000);
+  }
+
+  return { ...toRefs(state), start, stop, pause };
+}
+
+function createTeamStore(partialSate: Partial<Team>) {
+  const state = reactive(
+    Object.assign(
+      {
+        name: 'Equipe',
+        color: '#ff0000',
+        score: 0,
+        penality: 0,
+      },
+      partialSate
+    )
+  );
+
+  const dashboardStore = useDashboardStore();
+
+  function increasePenality() {
+    if (++state.penality > dashboardStore.maxPenality) {
+      state.score--;
+      state.penality = 0;
+    }
+  }
+
+  function decreasePenality() {
+    state.penality = Math.max(state.penality - 1, 0);
+  }
+
+  function increaseScore() {
+    state.score++;
+  }
+  function decreaseScore() {
+    state.score--;
+  }
+
+  return { ...toRefs(state), increasePenality, decreasePenality, increaseScore, decreaseScore };
+}
 
 export const useDashboardStore = defineStore('dashboard', {
   persist: true,
   state: () => ({
-    teamLeft: {
-      name: 'TTI',
-      color: colors[3],
-      score: 0,
-      penality: 0,
-    },
-    teamRight: {
-      name: 'Le CLAP',
-      color: colors[2],
-      score: 0,
-      penality: 0,
-    },
-    globalTimer: createTimerSate(90 * 60 * 1000),
-    timer: createTimerSate(3 * 60 * 1000),
+    teamLeft: createTeamStore({ name: 'Equipe 1', color: colors[3] }),
+    teamRight: createTeamStore({ name: 'Equipe 2', color: colors[2] }),
+    globalTimer: createTimerStore({ duration: 90 * 60 * 1000 }),
+    timer: createTimerStore({ duration: 3 * 60 * 1000 }),
     maxPenality: 3,
     category: 'Libre',
     theme: 'Caucus sur le cactus',
@@ -39,43 +99,4 @@ export const useDashboardStore = defineStore('dashboard', {
     displayGlobalTimer: true,
     displayFooter: true,
   }),
-  actions: {
-    increasePenality(team: 'teamLeft' | 'teamRight') {
-      const teamState = this[team];
-
-      if (++teamState.penality > this.maxPenality) {
-        teamState.score--;
-        teamState.penality = 0;
-      }
-    },
-    decreasePenality(team: 'teamLeft' | 'teamRight') {
-      const teamState = this[team];
-
-      teamState.penality = Math.max(teamState.penality - 1, 0);
-    },
-    startTimer() {
-      this.timer.intervalId = window.setInterval(() => {
-        this.timer.elapsed += 1000;
-
-        if (this.timer.elapsed >= this.timer.duration) {
-          this.stopTimer();
-        }
-      }, 1000);
-    },
-    stopTimer() {
-      window.clearInterval(this.timer.intervalId);
-    },
-    startGlobalTimer() {
-      this.globalTimer.intervalId = window.setInterval(() => {
-        this.globalTimer.elapsed += 1000;
-
-        if (this.globalTimer.elapsed >= this.globalTimer.duration) {
-          this.stopTimer();
-        }
-      }, 1000);
-    },
-    stopGlobalTimer() {
-      window.clearInterval(this.globalTimer.intervalId);
-    },
-  },
 });

@@ -3,6 +3,7 @@ import Index from '/src/pages/index.vue';
 import Dashboard from '@/modules/dashboard/dashboard.vue';
 import Controls from '@/modules/controls/controls.vue';
 import NotFound from '/src/pages/404.vue';
+import About from '/src/pages/about.vue';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
   },
   {
     path: '/:pathMatch(.*)*',

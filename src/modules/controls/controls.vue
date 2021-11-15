@@ -5,6 +5,7 @@ import { useControlsStore } from './controls.store';
 import { ref } from 'vue';
 import { ArrowUpRight, Lock } from '@vicons/tabler';
 import ColorPicker from './components/ColorPicker.vue';
+import TeamControl from './components/TeamControl.vue';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
@@ -25,10 +26,13 @@ const eventTypes = ["Match d'improvisation"];
           Êtes-vous sûr·e·s de vouloir reset toutes la valeures par default ?
         </n-popconfirm>
         &nbsp;
-        <n-button type="success" tag="a" href="/dashboard" target="_blank">
-          Ouvrir le dashboard &nbsp;
-          <n-icon><ArrowUpRight /></n-icon>
-        </n-button>
+
+        <router-link to="/dashboard" #="{ navigate, href }" custom>
+          <n-button tag="a" :href="href" type="success" target="_blank">
+            Ouvrir le dashboard &nbsp;
+            <n-icon><ArrowUpRight /></n-icon>
+          </n-button>
+        </router-link>
       </div>
     </n-space>
     <n-card title="Configuration générale" class="raised content-no-padding" :segmented="!controlsStore.lockConfiguration">
@@ -123,6 +127,18 @@ const eventTypes = ["Match d'improvisation"];
         </n-card>
       </n-collapse-transition>
     </n-card>
+    <br />
+    <n-card class="raised">
+      <n-grid :cols="3" x-gap="12">
+        <n-gi> <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" /> </n-gi>
+        <n-gi>sqd</n-gi>
+        <n-gi>
+          <router-link to="/" #="{ navigate, href }" custom>
+            <n-button tag="a" :href="href" @click="navigate">Back Home</n-button>
+          </router-link>
+        </n-gi>
+      </n-grid>
+    </n-card>
   </div>
 </template>
 
@@ -134,6 +150,7 @@ const eventTypes = ["Match d'improvisation"];
   padding: 60px;
   box-sizing: border-box;
 }
+
 .n-h1 {
   margin: 0;
 }
