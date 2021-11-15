@@ -3,7 +3,7 @@ import { useDashboardStore } from '@/stores/dashboard.store';
 import { useEventStore } from '@/stores/event.store';
 import { useControlsStore } from './controls.store';
 import { ref } from 'vue';
-import { ArrowUpRight, Lock, LockOpen } from '@vicons/tabler';
+import { ArrowUpRight, Lock } from '@vicons/tabler';
 import ColorPicker from './components/ColorPicker.vue';
 
 const dashboardStore = useDashboardStore();
@@ -36,9 +36,6 @@ const eventTypes = ["Match d'improvisation"];
         <n-switch v-model:value="controlsStore.lockConfiguration">
           <template #checked>
             <n-icon><Lock /></n-icon>
-          </template>
-          <template #unchecked>
-            <n-icon><LockOpen /></n-icon>
           </template>
         </n-switch>
       </template>
