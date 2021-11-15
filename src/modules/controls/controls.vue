@@ -30,7 +30,7 @@
 
       <n-collapse-transition :show="!controlsStore.lockConfiguration">
         <n-card embedded :bordered="false" class="section-card">
-          <n-collapse>
+          <n-collapse :default-expanded-names="['1', '2', '3']">
             <n-collapse-item title="Événement" name="1">
               <n-form label-width="200" label-placement="left">
                 <n-form-item label="Type d'évenement">
