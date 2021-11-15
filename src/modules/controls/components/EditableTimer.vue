@@ -1,0 +1,65 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import { PauseRound, PlayArrowRound, StopRound } from '@vicons/material';
+import { Timer, TimerSate } from '@/types/Timers.model';
+import { formatTimer } from '@/utils/string';
+
+const props = defineProps<{ timer: Timer }>();
+</script>
+
+<template>
+  <n-card class="horizontal-timer">
+    <n-space align="center" item-style="flex: 1 1 0">
+      <n-space vertical style="padding-right: 10px">
+        <div class="timer-title">Timer actuel</div>
+
+        <n-time-picker :value="props.timer.duration" :on-update:value="props.timer.setDuration" :actions="['confirm']" format="mm'm' ss's'" :seconds="Array.from(Array(4), (_, i) => i * 15)" />
+      </n-space>
+
+      <n-progress status="success" class="progress" type="circle" :percentage="(props.timer.elapsed / props.timer.duration) * 100" indicator-placement="inside-label">
+        <div class="timer">
+          {{ formatTimer(props.timer) }}
+        </div>
+      </n-progress>
+
+      <div class="controls">
+        <n-button v-show="props.timer.state !== TimerSate.RUNNING" circle color="#aaa" @click="props.timer.start">
+          <n-icon size="23"><PlayArrowRound /></n-icon>
+        </n-button>
+        <span v-show="props.timer.state === TimerSate.RUNNING">
+          <n-button circle color="#aaa" @click="props.timer.pause">
+            <n-icon size="23"><PauseRound /></n-icon>
+          </n-button>
+        </span>
+        &nbsp;
+        <span v-show="props.timer.state !== TimerSate.STOPPED">
+          <n-button circle color="#aaa" @click="props.timer.stop">
+            <n-icon size="23"><StopRound /></n-icon>
+          </n-button>
+        </span>
+      </div>
+    </n-space>
+  </n-card>
+</template>
+
+<style scoped lang="less">
+.horizontal-timer {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-radius: 10px;
+  .timer-title {
+    font-size: 16px;
+    opacity: 0.7;
+  }
+  .timer {
+    line-height: 1;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .controls {
+    text-align: right;
+  }
+}
+</style>

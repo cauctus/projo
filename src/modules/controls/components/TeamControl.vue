@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { Team } from '@/types/Team.model';
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 import { ArrowDown, ArrowUp, ArrowLeft, ArrowRight } from '@vicons/tabler';
 
-const props = defineProps<{ team: Team; maxPenality: number }>();
+const props = defineProps<{ team: Team; maxPenality: number; iconsLeft?: boolean }>();
+
+const hasMaxPenality = computed(() => props.team.penality === props.maxPenality);
 </script>
 
 <template>
   <n-card embedded class="team" :title="props.team.name">
     <n-space vertical align="center">
       <n-space align="center" justify="center">
-        <div class="score">{{ props.team.score }}</div>
+        <div v-if="!props.iconsLeft" class="score">{{ props.team.score }}</div>
         <n-space vertical>
           <n-button size="large" ghost circle @click="props.team.increaseScore">
             <template #icon>
@@ -23,6 +25,7 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
             </template>
           </n-button>
         </n-space>
+        <div v-if="props.iconsLeft" class="score">{{ props.team.score }}</div>
       </n-space>
       <!-- <div>Score</div> -->
     </n-space>
@@ -35,7 +38,8 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
           <n-icon><ArrowLeft /></n-icon>
         </template>
       </n-button>
-      <n-button size="large" ghost circle @click="props.team.increasePenality()">
+      <n-button v-if="hasMaxPenality" size="large" ghost round @click="props.team.increasePenality"> Penalité = 0 & Score -1 </n-button>
+      <n-button v-else size="large" ghost circle @click="props.team.increasePenality">
         <template #icon>
           <n-icon><ArrowRight /></n-icon>
         </template>
@@ -46,6 +50,16 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
 
 <style lang="less" scoped>
 .team {
+  overflow: hidden;
+  border-radius: 10px;
+  ::v-deep(.n-card-header) {
+    background-color: v-bind('props.team.color');
+    text-align: center;
+    .n-card-header__main {
+      color: white !important;
+      font-size: 30px;
+    }
+  }
   .score {
     line-height: 1.1;
     font-size: 120px;

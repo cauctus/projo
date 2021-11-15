@@ -2,10 +2,11 @@
 import { useDashboardStore } from '@/stores/dashboard.store';
 import { useEventStore } from '@/stores/event.store';
 import { useControlsStore } from './controls.store';
-import { ref } from 'vue';
 import { ArrowUpRight, Lock } from '@vicons/tabler';
 import ColorPicker from './components/ColorPicker.vue';
 import TeamControl from './components/TeamControl.vue';
+import HorizontalTimer from './components/HorizontalTimer.vue';
+import EditableTimer from './components/EditableTimer.vue';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
@@ -19,7 +20,7 @@ const eventTypes = ["Match d'improvisation"];
     <n-space align="center" justify="space-between">
       <n-h1>Controls</n-h1>
       <div>
-        <n-popconfirm @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]">
+        <n-popconfirm positive-text="Reset" negative-text="Annuler" @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]">
           <template #trigger>
             <n-button>Reset</n-button>
           </template>
@@ -128,17 +129,22 @@ const eventTypes = ["Match d'improvisation"];
       </n-collapse-transition>
     </n-card>
     <br />
-    <n-card class="raised">
-      <n-grid :cols="3" x-gap="12">
-        <n-gi> <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" /> </n-gi>
-        <n-gi>sqd</n-gi>
-        <n-gi>
-          <router-link to="/" #="{ navigate, href }" custom>
-            <n-button tag="a" :href="href" @click="navigate">Back Home</n-button>
-          </router-link>
-        </n-gi>
-      </n-grid>
-    </n-card>
+    <!-- <n-card class="raised"> -->
+    <n-grid :cols="3" x-gap="12">
+      <n-gi>
+        <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" />
+      </n-gi>
+      <n-gi>
+        <n-space item-style="width: 100%" vertical>
+          <HorizontalTimer class="raised" :timer="dashboardStore.globalTimer" />
+          <EditableTimer class="raised" :timer="dashboardStore.timer" />
+        </n-space>
+      </n-gi>
+      <n-gi>
+        <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" />
+      </n-gi>
+    </n-grid>
+    <!-- </n-card> -->
   </div>
 </template>
 
@@ -164,6 +170,12 @@ const eventTypes = ["Match d'improvisation"];
 .content-no-padding {
   ::v-deep(.n-card__content) {
     padding: 0;
+  }
+}
+
+.header-centered {
+  ::v-deep(.n-card-header) {
+    text-align: center;
   }
 }
 .section-card {

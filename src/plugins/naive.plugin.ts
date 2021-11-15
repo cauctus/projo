@@ -22,9 +22,11 @@ import {
   NSlider,
   NCollapse,
   NCollapseItem,
+  NProgress,
 } from 'naive-ui';
 
 const components = [
+  NProgress,
   NCollapse,
   NCollapseItem,
   NSlider,

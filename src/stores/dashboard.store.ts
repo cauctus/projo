@@ -18,30 +18,35 @@ function createTimerStore(partialSate: Partial<Timer>) {
     )
   );
 
-  function clearInterval() {
-    window.clearInterval(state.intervalId);
-  }
-
-  function stop() {
-    clearInterval();
-    state.elapsed = 0;
-  }
-
-  function pause() {
-    clearInterval();
-  }
-
-  function start() {
-    state.intervalId = window.setInterval(() => {
+  state.intervalId = window.setInterval(() => {
+    if (state.state === TimerSate.RUNNING) {
       state.elapsed += 1000;
 
       if (state.elapsed >= state.duration) {
         pause();
+        state.state = TimerSate.ENDED;
       }
-    }, 1000);
+    }
+  }, 1000);
+
+  function setDuration(duration: number | null) {
+    state.duration = duration ?? 0;
   }
 
-  return { ...toRefs(state), start, stop, pause };
+  function stop() {
+    state.elapsed = 0;
+    state.state = TimerSate.STOPPED;
+  }
+
+  function pause() {
+    state.state = TimerSate.PAUSED;
+  }
+
+  function start() {
+    state.state = TimerSate.RUNNING;
+  }
+
+  return { ...toRefs(state), start, stop, pause, setDuration };
 }
 
 function createTeamStore(partialSate: Partial<Team>) {

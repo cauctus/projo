@@ -43,7 +43,7 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tab
             </div>
 
             <router-link to="/controls" #="{ navigate, href }" custom>
-              <n-button color="#f34772" style="color: white" tag="a" :href="href" type="success" @click="navigate">
+              <n-button color="#fc466b" style="color: white" tag="a" :href="href" type="success" @click="navigate">
                 Commencer &nbsp;
                 <n-icon><ArrowRight /></n-icon>
               </n-button>
