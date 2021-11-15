@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+import { useDashboardStore } from '@/stores/dashboard.store';
+import { useEventStore } from '@/stores/event.store';
+import { useControlsStore } from './controls.store';
+import { ref } from 'vue';
+import { ArrowUpRight, Lock, LockOpen } from '@vicons/tabler';
+import ColorPicker from './components/ColorPicker.vue';
+
+const dashboardStore = useDashboardStore();
+const eventStore = useEventStore();
+const controlsStore = useControlsStore();
+
+const eventTypes = ["Match d'improvisation"];
+</script>
+
 <template>
   <div class="page-wrapper">
     <n-space align="center" justify="space-between">
@@ -92,7 +107,7 @@
                       <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
                     </n-form-item>
                     <n-form-item label="Couleur l'équipe">
-                      <n-color-picker v-model:value="dashboardStore.teamLeft.color" />
+                      <color-picker v-model:value="dashboardStore.teamLeft.color" />
                     </n-form-item>
                   </n-gi>
                   <n-gi>
@@ -101,7 +116,7 @@
                       <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
                     </n-form-item>
                     <n-form-item label="Couleur l'équipe">
-                      <n-color-picker v-model:value="dashboardStore.teamRight.color" />
+                      <color-picker v-model:value="dashboardStore.teamRight.color" />
                     </n-form-item>
                   </n-gi>
                 </n-grid>
@@ -113,20 +128,6 @@
     </n-card>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useDashboardStore } from '@/stores/dashboard.store';
-import { useEventStore } from '@/stores/event.store';
-import { useControlsStore } from './controls.store';
-import { ref } from 'vue';
-import { ArrowUpRight, Lock, LockOpen } from '@vicons/tabler';
-
-const dashboardStore = useDashboardStore();
-const eventStore = useEventStore();
-const controlsStore = useControlsStore();
-
-const eventTypes = ["Match d'improvisation"];
-</script>
 
 <style scoped lang="less">
 .page-wrapper {
