@@ -24,6 +24,7 @@ function createTimerStore(partialSate: Partial<Timer>) {
 
       if (state.elapsed >= state.duration) {
         pause();
+        state.elapsed = state.duration;
         state.state = TimerSate.ENDED;
       }
     }
@@ -31,6 +32,12 @@ function createTimerStore(partialSate: Partial<Timer>) {
 
   function setDuration(duration: number | null) {
     state.duration = duration ?? 0;
+
+    if (state.elapsed >= state.duration) {
+      pause();
+      state.elapsed = state.duration;
+      state.state = TimerSate.ENDED;
+    }
   }
 
   function stop() {
