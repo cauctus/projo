@@ -102,7 +102,7 @@ export const useDashboardStore = defineStore('dashboard', {
     maxPenality: 3,
     category: 'Libre',
     theme: 'Caucus sur le cactus',
-    playerCount: -1,
+    playerCount: 'Illimité',
     type: 'Comparé',
     zoom: 1,
     offsetX: 0,

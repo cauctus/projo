@@ -33,7 +33,7 @@
           </div>
           <div class="footer-right">
             <div>Nb. de personnes :</div>
-            <div>{{ store.playerCount >= 0 ? store.playerCount : 'Illimité' }}</div>
+            <div>{{ store.playerCount.length ? store.playerCount : 'Illimité' }}</div>
             <!-- <div><span>Type :</span> {{ store.type }}</div> -->
           </div>
         </div>

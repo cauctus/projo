@@ -144,6 +144,32 @@ const eventTypes = ["Match d'improvisation"];
         <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" />
       </n-gi>
     </n-grid>
+
+    <br />
+    <n-grid :cols="4" x-gap="12">
+      <n-gi :span="2" :offset="1">
+        <n-card class="raised">
+          <n-form label-width="200" label-placement="top">
+            <n-form-item label="Categorie">
+              <n-input v-model:value="dashboardStore.category" type="text" placeholder="ex: Western" />
+            </n-form-item>
+
+            <n-form-item label="Nombre de joueurs">
+              <n-input v-model:value="dashboardStore.playerCount" type="text" placeholder="ex: 2 par équipe" />
+            </n-form-item>
+
+            <n-form-item label="Type">
+              <n-input v-model:value="dashboardStore.type" type="text" placeholder="ex: comparé" />
+            </n-form-item>
+
+            <n-form-item label="Thème">
+              <n-input v-model:value="dashboardStore.theme" type="text" placeholder="ex: Caucus sur le cactus" />
+            </n-form-item>
+          </n-form>
+        </n-card>
+      </n-gi>
+    </n-grid>
+
     <!-- </n-card> -->
   </div>
 </template>
