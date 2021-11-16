@@ -148,7 +148,7 @@ const eventTypes = ["Match d'improvisation"];
     <br />
     <n-grid :cols="4" x-gap="12">
       <n-gi :span="2" :offset="1">
-        <n-card class="raised">
+        <n-card class="raised" title="(Section style WIP)">
           <n-form label-width="200" label-placement="top">
             <n-form-item label="Categorie">
               <n-input v-model:value="dashboardStore.category" type="text" placeholder="ex: Western" />
