@@ -23,9 +23,13 @@ import {
   NCollapse,
   NCollapseItem,
   NProgress,
+  NAutoComplete,
+  NSelect,
 } from 'naive-ui';
 
 const components = [
+  NSelect,
+  NAutoComplete,
   NProgress,
   NCollapse,
   NCollapseItem,

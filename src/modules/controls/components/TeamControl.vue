@@ -66,7 +66,7 @@ const hasMaxPenality = computed(() => props.team.penality === props.maxPenality)
   }
 
   .penalities-wrapper {
-    padding: 30px 60px 25px;
+    padding: 30px 0 25px;
     .penality {
       @size: 20px;
 

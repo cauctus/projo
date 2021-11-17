@@ -7,6 +7,9 @@ import ColorPicker from './components/ColorPicker.vue';
 import TeamControl from './components/TeamControl.vue';
 import HorizontalTimer from './components/HorizontalTimer.vue';
 import EditableTimer from './components/EditableTimer.vue';
+import CategoryAutoComplete from './components/CategoryAutoComplete.vue';
+import TypeAutoComplete from './components/TypeAutoComplete.vue';
+import PlayerCountComplete from './components/PlayerCountComplete.vue';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
@@ -17,160 +20,167 @@ const eventTypes = ["Match d'improvisation"];
 
 <template>
   <div class="page-wrapper">
-    <n-space align="center" justify="space-between">
-      <n-h1>Controls</n-h1>
-      <div>
-        <n-popconfirm positive-text="Reset" negative-text="Annuler" @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]">
-          <template #trigger>
-            <n-button>Reset</n-button>
-          </template>
-          Êtes-vous sûr·e·s de vouloir reset toutes la valeures par default ?
-        </n-popconfirm>
-        &nbsp;
+    <div class="content-wrapper">
+      <n-space align="center" justify="space-between">
+        <n-h1>Controls</n-h1>
+        <div>
+          <n-popconfirm positive-text="Reset" negative-text="Annuler" @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]">
+            <template #trigger>
+              <n-button>Reset</n-button>
+            </template>
+            Êtes-vous sûr·e·s de vouloir reset toutes la valeures par default ?
+          </n-popconfirm>
+          &nbsp;
 
-        <router-link to="/dashboard" #="{ navigate, href }" custom>
-          <n-button tag="a" :href="href" type="success" target="_blank">
-            Ouvrir le dashboard &nbsp;
-            <n-icon><ArrowUpRight /></n-icon>
-          </n-button>
-        </router-link>
-      </div>
-    </n-space>
-    <n-card title="Configuration générale" class="raised content-no-padding" :segmented="!controlsStore.lockConfiguration">
-      <template #header-extra>
-        <n-switch v-model:value="controlsStore.lockConfiguration">
-          <template #checked>
-            <n-icon><Lock /></n-icon>
-          </template>
-        </n-switch>
-      </template>
+          <router-link to="/dashboard" #="{ navigate, href }" custom>
+            <n-button tag="a" :href="href" type="success" target="_blank">
+              Ouvrir le dashboard &nbsp;
+              <n-icon><ArrowUpRight /></n-icon>
+            </n-button>
+          </router-link>
+        </div>
+      </n-space>
+      <n-card title="Configuration générale" class="raised content-no-padding" :segmented="!controlsStore.lockConfiguration">
+        <template #header-extra>
+          <n-switch v-model:value="controlsStore.lockConfiguration">
+            <template #checked>
+              <n-icon><Lock /></n-icon>
+            </template>
+          </n-switch>
+        </template>
 
-      <n-collapse-transition :show="!controlsStore.lockConfiguration">
-        <n-card embedded :bordered="false" class="section-card">
-          <n-collapse :default-expanded-names="['1', '2', '3']">
-            <n-collapse-item title="Événement" name="1">
-              <n-form label-width="200" label-placement="left">
-                <n-form-item label="Type d'évenement">
-                  <n-input v-model:value="eventStore.type" type="text" placeholder="ex: Match d'improvisation" />
-                </n-form-item>
-                <n-form-item label="Nom de l'evenement">
-                  <n-input v-model:value="eventStore.name" type="text" placeholder="ex: Le match des petits" />
-                </n-form-item>
-                <n-form-item label="Durée totale de l'evenement">
-                  <n-time-picker
-                    v-model:value="dashboardStore.globalTimer.duration"
-                    placeholder="ex: Le match des petits"
-                    :actions="['confirm']"
-                    format="H'h' mm'm'"
-                    :minutes="Array.from(Array(6), (_, i) => i * 10)"
-                    :disabled="!dashboardStore.displayGlobalTimer"
-                  />
-                  <span v-show="!dashboardStore.displayGlobalTimer" class="muted"> &nbsp;&nbsp; Le timer global est desactivé</span>
-                </n-form-item>
-                <n-form-item label="Nombre de pénalités max">
-                  <n-input-number v-model:value="dashboardStore.maxPenality" type="text" placeholder="ex: 3" :min="0" />
-                </n-form-item>
+        <n-collapse-transition :show="!controlsStore.lockConfiguration">
+          <n-card embedded :bordered="false" class="section-card">
+            <n-collapse :default-expanded-names="['1', '2', '3']">
+              <n-collapse-item title="Événement" name="1">
+                <n-form label-width="200" label-placement="left">
+                  <n-form-item label="Type d'évenement">
+                    <n-input v-model:value="eventStore.type" type="text" placeholder="ex: Match d'improvisation" />
+                  </n-form-item>
+                  <n-form-item label="Nom de l'evenement">
+                    <n-input v-model:value="eventStore.name" type="text" placeholder="ex: Le match des petits" />
+                  </n-form-item>
+                  <n-form-item label="Durée totale de l'evenement">
+                    <n-time-picker
+                      v-model:value="dashboardStore.globalTimer.duration"
+                      placeholder="ex: Le match des petits"
+                      :actions="['confirm']"
+                      format="H'h' mm'm'"
+                      :minutes="Array.from(Array(6), (_, i) => i * 10)"
+                      :disabled="!dashboardStore.displayGlobalTimer"
+                    />
+                    <span v-show="!dashboardStore.displayGlobalTimer" class="muted"> &nbsp;&nbsp; Le timer global est desactivé</span>
+                  </n-form-item>
+                  <n-form-item label="Nombre de pénalités max">
+                    <n-input-number v-model:value="dashboardStore.maxPenality" type="text" placeholder="ex: 3" :min="0" />
+                  </n-form-item>
+                </n-form>
+              </n-collapse-item>
+              <n-collapse-item title="Affichage" name="2">
+                <n-form label-width="200" label-placement="left">
+                  <n-grid :cols="3">
+                    <n-gi :span="2">
+                      <n-form-item label="Zoom du dashboard">
+                        <n-slider v-model:value="dashboardStore.zoom" :step="0.05" :min="0" :max="2" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                      </n-form-item>
+                      <n-form-item label="Décalage horizontal">
+                        <n-slider v-model:value="dashboardStore.offsetX" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                      </n-form-item>
+                      <n-form-item label="Décalage vertical">
+                        <n-slider v-model:value="dashboardStore.offsetY" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                      </n-form-item>
+                    </n-gi>
+                    <n-gi>
+                      <n-form-item label="Afficher le header">
+                        <n-switch v-model:value="dashboardStore.displayHeader" />
+                      </n-form-item>
+                      <n-form-item label="Afficher le footer">
+                        <n-switch v-model:value="dashboardStore.displayFooter" />
+                      </n-form-item>
+                      <n-form-item label="Afficher le timer global">
+                        <n-switch v-model:value="dashboardStore.displayGlobalTimer" />
+                      </n-form-item>
+                    </n-gi>
+                  </n-grid>
+                </n-form>
+              </n-collapse-item>
+              <n-collapse-item title="Equipes" name="3">
+                <n-form label-width="200" label-placement="left">
+                  <n-grid :cols="2" x-gap="24">
+                    <n-gi>
+                      <strong>Equipe 1</strong>
+                      <n-form-item label="Nom de l'équipe">
+                        <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
+                      </n-form-item>
+                      <n-form-item label="Couleur l'équipe">
+                        <color-picker v-model:value="dashboardStore.teamLeft.color" />
+                      </n-form-item>
+                    </n-gi>
+                    <n-gi>
+                      <strong>Equipe 2</strong>
+                      <n-form-item label="Nom de l'équipe">
+                        <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
+                      </n-form-item>
+                      <n-form-item label="Couleur l'équipe">
+                        <color-picker v-model:value="dashboardStore.teamRight.color" />
+                      </n-form-item>
+                    </n-gi>
+                  </n-grid>
+                </n-form>
+              </n-collapse-item>
+            </n-collapse>
+          </n-card>
+        </n-collapse-transition>
+      </n-card>
+      <br />
+      <!-- <n-card class="raised"> -->
+      <n-grid :cols="7" x-gap="12">
+        <n-gi span="2">
+          <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" />
+        </n-gi>
+        <n-gi span="3">
+          <n-space item-style="width: 100%" vertical>
+            <HorizontalTimer class="raised" :timer="dashboardStore.globalTimer" />
+            <EditableTimer class="raised" :timer="dashboardStore.timer" />
+
+            <n-card class="raised content-no-padding">
+              <n-form label-placement="top">
+                <div style="padding: 20px">
+                  <n-space item-style="flex-grow: 1; padding:0" :wrap="false">
+                    <n-form-item label="Type d'impro">
+                      <TypeAutoComplete v-model:value="dashboardStore.type" />
+                    </n-form-item>
+                    <n-form-item label="Nombre de personnes">
+                      <PlayerCountComplete v-model:value="dashboardStore.playerCount" />
+                    </n-form-item>
+                  </n-space>
+
+                  <n-form-item label="Categorie" :show-feedback="false">
+                    <CategoryAutoComplete v-model:value="dashboardStore.category" />
+                  </n-form-item>
+                </div>
+
+                <n-card embedded title="Thème">
+                  <n-form-item :show-label="false">
+                    <n-input v-model:value="dashboardStore.theme" size="large" type="textarea" :autosize="{ minRows: 1, maxRows: 5 }" placeholder="ex: Caucus sur le cactus" />
+                  </n-form-item>
+                </n-card>
               </n-form>
-            </n-collapse-item>
-            <n-collapse-item title="Affichage" name="2">
-              <n-form label-width="200" label-placement="left">
-                <n-grid :cols="3">
-                  <n-gi :span="2">
-                    <n-form-item label="Zoom du dashboard">
-                      <n-slider v-model:value="dashboardStore.zoom" :step="0.05" :min="0" :max="2" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
-                    </n-form-item>
-                    <n-form-item label="Décalage horizontal">
-                      <n-slider v-model:value="dashboardStore.offsetX" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
-                    </n-form-item>
-                    <n-form-item label="Décalage vertical">
-                      <n-slider v-model:value="dashboardStore.offsetY" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
-                    </n-form-item>
-                  </n-gi>
-                  <n-gi>
-                    <n-form-item label="Afficher le header">
-                      <n-switch v-model:value="dashboardStore.displayHeader" />
-                    </n-form-item>
-                    <n-form-item label="Afficher le footer">
-                      <n-switch v-model:value="dashboardStore.displayFooter" />
-                    </n-form-item>
-                    <n-form-item label="Afficher le timer global">
-                      <n-switch v-model:value="dashboardStore.displayGlobalTimer" />
-                    </n-form-item>
-                  </n-gi>
-                </n-grid>
-              </n-form>
-            </n-collapse-item>
-            <n-collapse-item title="Equipes" name="3">
-              <n-form label-width="200" label-placement="left">
-                <n-grid :cols="2" x-gap="24">
-                  <n-gi>
-                    <strong>Equipe 1</strong>
-                    <n-form-item label="Nom de l'équipe">
-                      <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
-                    </n-form-item>
-                    <n-form-item label="Couleur l'équipe">
-                      <color-picker v-model:value="dashboardStore.teamLeft.color" />
-                    </n-form-item>
-                  </n-gi>
-                  <n-gi>
-                    <strong>Equipe 2</strong>
-                    <n-form-item label="Nom de l'équipe">
-                      <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
-                    </n-form-item>
-                    <n-form-item label="Couleur l'équipe">
-                      <color-picker v-model:value="dashboardStore.teamRight.color" />
-                    </n-form-item>
-                  </n-gi>
-                </n-grid>
-              </n-form>
-            </n-collapse-item>
-          </n-collapse>
-        </n-card>
-      </n-collapse-transition>
-    </n-card>
-    <br />
-    <!-- <n-card class="raised"> -->
-    <n-grid :cols="3" x-gap="12">
-      <n-gi>
-        <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" />
-      </n-gi>
-      <n-gi>
-        <n-space item-style="width: 100%" vertical>
-          <HorizontalTimer class="raised" :timer="dashboardStore.globalTimer" />
-          <EditableTimer class="raised" :timer="dashboardStore.timer" />
-        </n-space>
-      </n-gi>
-      <n-gi>
-        <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" />
-      </n-gi>
-    </n-grid>
+            </n-card>
+          </n-space>
+        </n-gi>
+        <n-gi span="2">
+          <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" />
+        </n-gi>
+      </n-grid>
 
-    <br />
-    <n-grid :cols="4" x-gap="12">
-      <n-gi :span="2" :offset="1">
-        <n-card class="raised" title="(Section style WIP)">
-          <n-form label-width="200" label-placement="top">
-            <n-form-item label="Categorie">
-              <n-input v-model:value="dashboardStore.category" type="text" placeholder="ex: Western" />
-            </n-form-item>
+      <br />
+      <n-grid :cols="4" x-gap="12">
+        <n-gi :span="2" :offset="1" />
+      </n-grid>
 
-            <n-form-item label="Nombre de joueurs">
-              <n-input v-model:value="dashboardStore.playerCount" type="text" placeholder="ex: 2 par équipe" />
-            </n-form-item>
-
-            <n-form-item label="Type">
-              <n-input v-model:value="dashboardStore.type" type="text" placeholder="ex: comparé" />
-            </n-form-item>
-
-            <n-form-item label="Thème">
-              <n-input v-model:value="dashboardStore.theme" type="text" placeholder="ex: Caucus sur le cactus" />
-            </n-form-item>
-          </n-form>
-        </n-card>
-      </n-gi>
-    </n-grid>
-
-    <!-- </n-card> -->
+      <!-- </n-card> -->
+    </div>
   </div>
 </template>
 
@@ -181,6 +191,11 @@ const eventTypes = ["Match d'improvisation"];
   background-color: #f5f5fb;
   padding: 60px;
   box-sizing: border-box;
+
+  .content-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
 }
 
 .n-h1 {
@@ -194,7 +209,7 @@ const eventTypes = ["Match d'improvisation"];
   color: #a2a2a2cc;
 }
 .content-no-padding {
-  ::v-deep(.n-card__content) {
+  & > ::v-deep(.n-card__content) {
     padding: 0;
   }
 }
