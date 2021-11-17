@@ -16,17 +16,19 @@ const props = defineProps<{ timer: Timer }>();
         <n-time-picker :value="props.timer.duration" :on-update:value="props.timer.setDuration" :actions="['confirm']" format="mm'm' ss's'" :seconds="Array.from(Array(4), (_, i) => i * 15)" />
       </n-space>
 
-      <n-progress
-        :status="props.timer.state === TimerSate.ENDED ? 'error' : 'success'"
-        class="progress"
-        type="circle"
-        :percentage="(props.timer.elapsed / props.timer.duration) * 100"
-        indicator-placement="inside-label"
-      >
-        <div class="timer">
-          {{ formatTimer(props.timer) }}
-        </div>
-      </n-progress>
+      <div style="text-align: center">
+        <n-progress
+          :status="props.timer.state === TimerSate.ENDED ? 'error' : 'success'"
+          class="progress"
+          type="circle"
+          :percentage="(props.timer.elapsed / props.timer.duration) * 100"
+          indicator-placement="inside-label"
+        >
+          <div class="timer">
+            {{ formatTimer(props.timer) }}
+          </div>
+        </n-progress>
+      </div>
 
       <div class="controls">
         <n-button v-show="props.timer.state !== TimerSate.RUNNING" circle color="#aaa" @click="props.timer.start">
