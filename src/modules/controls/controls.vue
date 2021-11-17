@@ -140,7 +140,7 @@ const eventTypes = ["Match d'improvisation"];
         </n-gi>
         <n-gi span="3">
           <n-space item-style="width: 100%" vertical>
-            <HorizontalTimer class="raised" :timer="dashboardStore.globalTimer" />
+            <HorizontalTimer v-show="dashboardStore.displayGlobalTimer" class="raised" :timer="dashboardStore.globalTimer" />
             <EditableTimer class="raised" :timer="dashboardStore.timer" />
 
             <n-card class="raised content-no-padding">

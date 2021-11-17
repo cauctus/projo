@@ -2,13 +2,13 @@
   <n-config-provider :theme="darkTheme">
     <div class="fullpage-centered">
       <n-card class="main-card" :bordered="false" content-style="padding: 0;">
-        <n-space v-show="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
+        <n-space v-if="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
         <n-space class="teams-wrapper" justify="space-between" align="center">
           <team-info :team="store.teamLeft" :max-penality="store.maxPenality" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
-            <div v-show="store.displayGlobalTimer" class="timer global-timer">
+            <div v-if="store.displayGlobalTimer" class="timer global-timer">
               {{ formatTimer(store.globalTimer, { showHours: true }) }}
             </div>
 
@@ -20,7 +20,7 @@
           <team-info :team="store.teamRight" :max-penality="store.maxPenality" />
         </n-space>
 
-        <div v-show="store.displayFooter" class="footer">
+        <div v-if="store.displayFooter" class="footer">
           <div class="footer-left">
             <div><span>Type :</span> {{ store.type }}</div>
             <div><span>Categorie :</span> {{ store.category }}</div>
