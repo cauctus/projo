@@ -29,6 +29,7 @@
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@fontsource/ubuntu": "^4.5.0",
     "piesocket-js": "^1.4.0",
     "pinia": "^2.0.4",
     "pinia-plugin-persistedstate": "^1.0.2",
