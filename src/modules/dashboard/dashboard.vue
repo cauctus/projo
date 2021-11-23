@@ -23,10 +23,10 @@
         <div v-if="store.displayFooter" class="footer">
           <div class="footer-left">
             <div><span>Type :</span> {{ store.type }}</div>
-            <div><span>Categorie :</span> {{ store.category }}</div>
+            <div><span>Catégorie :</span> {{ store.category }}</div>
           </div>
           <div class="footer-center">
-            <div class="footer-center-head">Theme</div>
+            <div class="footer-center-head">Thème</div>
             <div class="footer-center-theme">
               {{ store.theme }}
             </div>

@@ -3,7 +3,7 @@ import { defineProps, defineEmits } from 'vue';
 const props = defineProps<{ value: string }>();
 const emit = defineEmits<{ (e: 'update:value', id: string): void }>();
 
-const types = ['Mixte', 'Comparée', 'Fusilade', 'Mitraillette'].map((label) => ({ label, value: label }));
+const types = ['Mixte', 'Comparée', 'Fusillade', 'Mitraillette'].map((label) => ({ label, value: label }));
 </script>
 
 <template>

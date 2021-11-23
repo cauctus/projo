@@ -155,7 +155,7 @@ const eventTypes = ["Match d'improvisation"];
                     </n-form-item>
                   </n-space>
 
-                  <n-form-item label="Categorie" :show-feedback="false">
+                  <n-form-item label="Catégorie" :show-feedback="false">
                     <CategoryAutoComplete v-model:value="dashboardStore.category" />
                   </n-form-item>
                 </div>
