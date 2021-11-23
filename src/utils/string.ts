@@ -1,5 +1,9 @@
-export function formatTime(msTotal: number, { showHours }: { showHours: boolean }) {
+type FormatTimer = { showHours: boolean };
+
+export function formatTime(msTotal: number, { showHours }: FormatTimer) {
   const date = new Date(msTotal);
+  date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const seconds = date.getSeconds().toString().padStart(2, '0');
@@ -7,6 +11,6 @@ export function formatTime(msTotal: number, { showHours }: { showHours: boolean 
   return showHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
 }
 
-export function formatTimer(timer: { elapsed: number; duration: number }, { showHours }: { showHours: boolean } = { showHours: false }) {
-  return formatTime(timer.duration - timer.elapsed, { showHours });
+export function formatTimer(timer: { elapsed: number; duration: number }, config: FormatTimer = { showHours: false }) {
+  return formatTime(timer.duration - timer.elapsed, config);
 }

@@ -10,6 +10,7 @@ import EditableTimer from './components/EditableTimer.vue';
 import CategoryAutoComplete from './components/CategoryAutoComplete.vue';
 import TypeAutoComplete from './components/TypeAutoComplete.vue';
 import PlayerCountComplete from './components/PlayerCountComplete.vue';
+import { currentMillisToUTCMillis, utcMillisToCurrentMillis } from '@/utils/date';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
@@ -62,7 +63,8 @@ const eventTypes = ["Match d'improvisation"];
                   </n-form-item>
                   <n-form-item label="Durée totale de l'evenement">
                     <n-time-picker
-                      v-model:value="dashboardStore.globalTimer.duration"
+                      :value="currentMillisToUTCMillis(dashboardStore.globalTimer.duration)"
+                      :on-update:value="(value: number) => dashboardStore.globalTimer.duration = utcMillisToCurrentMillis(value)"
                       placeholder="ex: Le match des petits"
                       :actions="['confirm']"
                       format="H'h' mm'm'"
