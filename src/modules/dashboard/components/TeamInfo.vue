@@ -11,7 +11,7 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
       <n-h1>{{ props.team.name }}</n-h1>
     </div>
     <n-space class="score" justify="center">{{ props.team.score }}</n-space>
-    <n-space class="penalities-wrapper" justify="space-around" align="center">
+    <n-space class="penalities-wrapper" justify="space-around" align="center" wrap>
       <div v-for="index in props.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
     </n-space>
   </div>
@@ -19,6 +19,7 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
 
 <style scoped lang="less">
 .team {
+  width: 100%;
   z-index: 40;
   background-color: #1f1f24;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -30,7 +31,8 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
   //   border: 12px solid v-bind('props.team.color');
 
   .penalities-wrapper {
-    padding: 30px 60px 25px;
+    padding: 30px 10px 25px;
+
     .penality {
       @size: 50px;
 
@@ -46,7 +48,7 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
   }
 
   .name-wrapper {
-    width: 430px;
+    min-width: 430px;
     height: 100px;
     display: flex;
     align-items: center;

@@ -4,7 +4,7 @@
       <n-card class="main-card" :bordered="false" content-style="padding: 0;">
         <n-space v-if="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
-        <n-space class="teams-wrapper" justify="space-between" align="center">
+        <n-space class="teams-wrapper" justify="space-between" align="center" :wrap="false">
           <team-info :team="store.teamLeft" :max-penality="store.maxPenality" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
@@ -16,7 +16,6 @@
               {{ formatTimer(store.timer) }}
             </div>
           </n-space>
-
           <team-info :team="store.teamRight" :max-penality="store.maxPenality" />
         </n-space>
 
@@ -115,7 +114,6 @@ const eventStore = useEventStore();
 
     .middle-wrapper {
       z-index: 50;
-      margin: 0 -40px;
       .timer {
         line-height: 1;
         font-family: monospace;
