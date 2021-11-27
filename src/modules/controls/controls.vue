@@ -7,9 +7,9 @@ import ColorPicker from './components/ColorPicker.vue';
 import TeamControl from './components/TeamControl.vue';
 import HorizontalTimer from './components/HorizontalTimer.vue';
 import EditableTimer from './components/EditableTimer.vue';
-import CategoryAutoComplete from './components/CategoryAutoComplete.vue';
-import TypeAutoComplete from './components/TypeAutoComplete.vue';
-import PlayerCountComplete from './components/PlayerCountComplete.vue';
+import CategoryAutoComplete from '../shared/components/CategoryAutoComplete.vue';
+import TypeAutoComplete from '../shared/components/TypeAutoComplete.vue';
+import PlayerCountComplete from '../shared/components/PlayerCountComplete.vue';
 import { currentMillisToUTCMillis, utcMillisToCurrentMillis } from '@/utils/date';
 
 const dashboardStore = useDashboardStore();

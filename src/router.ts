@@ -1,7 +1,9 @@
+import { Timer } from '@/types/Timers.model';
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from '/src/pages/index.vue';
 import Dashboard from '@/modules/dashboard/dashboard.vue';
 import Controls from '@/modules/controls/controls.vue';
+import Create from '@/modules/create/create.vue';
 import NotFound from '/src/pages/404.vue';
 import About from '/src/pages/about.vue';
 
@@ -25,6 +27,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About,
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: Create,
   },
   {
     path: '/:pathMatch(.*)*',

@@ -1,6 +1,6 @@
 type FormatTimer = { showHours: boolean };
 
-export function formatTime(msTotal: number, { showHours }: FormatTimer) {
+export function formatTime(msTotal: number, { showHours }: FormatTimer = { showHours: false }) {
   const date = new Date(msTotal);
   date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
 
