@@ -10,21 +10,21 @@ const impros = ref<Impro[]>([
     duration: 3 * 60 * 1000,
     playerCount: '2 par équipe',
     theme: 'Caucus sur le cactus',
-    type: 'libre',
+    type: 'Libre',
   },
   {
     category: 'category',
     duration: 3 * 60 * 1000,
     playerCount: '2 par équipe',
     theme: 'Caucus sur le cactus',
-    type: 'libre',
+    type: 'Libre',
   },
   {
     category: 'category',
     duration: 3 * 60 * 1000,
     playerCount: '2 par équipe',
     theme: 'Caucus sur le cactus',
-    type: 'libre',
+    type: 'Libre',
   },
 ]);
 
@@ -42,18 +42,18 @@ const onRemove = (i: number) => {
       </n-space>
 
       <n-card title="Création" class="raised content-no-padding">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sit, vero ullam deleniti cupiditate neque nesciunt dolores, dolore illo tempora voluptatibus consequatur itaque velit. Iste
-        quaerat nobis animi consequatur voluptas!
+        Cette page permet de créer et générer les impros pour l'arbitrage d'un match d'impro. Une fois la liste d'impro créée, il est possible de l'exporter pour l'arbitrage (ou pour le modifier plus
+        tard en le réimportant).
       </n-card>
       <br />
-      <n-grid cols="2" x-gap="12">
-        <n-gi>
+      <n-grid cols="5" x-gap="12">
+        <n-gi span="2">
+          <ImproEditor :edit="false" @added="(impro) => impros.push(impro)" />
+        </n-gi>
+        <n-gi span="3">
           <n-card embedded>
             <ImproPreview v-model:impros="impros" />
           </n-card>
-        </n-gi>
-        <n-gi>
-          <ImproEditor :edit="false" @added="(impro) => impros.push(impro)" />
         </n-gi>
       </n-grid>
     </div>

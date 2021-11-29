@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { Impro } from '@/types/Impro.model';
-import { ref, defineEmits, defineProps } from 'vue';
+import { ref, defineEmits, defineProps, withDefaults } from 'vue';
 import CategoryAutoComplete from '@/modules/shared/components/CategoryAutoComplete.vue';
 import TypeAutoComplete from '@/modules/shared/components/TypeAutoComplete.vue';
 import PlayerCountComplete from '@/modules/shared/components/PlayerCountComplete.vue';
+import { FormItemRule } from 'naive-ui';
 
 const defaultImpro = {
-  category: '',
+  category: 'Libre',
   duration: 3 * 60 * 1000,
   playerCount: 'Illimité',
   theme: '',
@@ -14,28 +15,50 @@ const defaultImpro = {
 };
 
 const emit = defineEmits<{ (e: 'added', i: Impro): void; (e: 'edited', i: Impro): void }>();
-const props = defineProps<{ edit: boolean }>();
+const props = withDefaults(defineProps<{ edit?: boolean }>(), { edit: false });
 
 const impro = ref<Impro>(defaultImpro);
 const formRef = ref<{ validate: (cb: (errors: string[]) => void) => void }>();
 
-const rules = Object.keys(defaultImpro).reduce((acc, key) => {
-  acc[key] = {
+const trigger = ['blur', 'input'];
+
+const rules: { [k in keyof Impro]: FormItemRule } = {
+  category: {
     required: true,
     message: '',
-    trigger: ['blur', 'input'],
-  };
-
-  return acc;
-}, {} as { [key: string]: unknown });
+    trigger,
+  },
+  duration: {
+    type: 'number',
+    required: true,
+    message: '',
+    trigger,
+  },
+  playerCount: {
+    required: true,
+    message: '',
+    trigger,
+  },
+  theme: {
+    required: true,
+    message: '',
+    trigger,
+  },
+  type: {
+    required: true,
+    message: '',
+    trigger,
+  },
+};
 
 function onButtonPressed(e: Event) {
   e.preventDefault();
   if (formRef?.value) {
     formRef.value.validate((errors: string[]) => {
       if (!errors) {
-        emit('edited', impro.value);
-        emit('added', impro.value);
+        const improCopy = { ...impro.value };
+        emit('edited', improCopy);
+        emit('added', improCopy);
       } else {
         console.log(errors);
       }
@@ -61,7 +84,7 @@ function onButtonPressed(e: Event) {
 
             <n-space item-style="flex-grow: 1; padding:0" :wrap="false">
               <n-form-item label="Catégorie" path="category">
-                <CategoryAutoComplete v-model:value="impro.category" />
+                <CategoryAutoComplete v-model:value="impro.category" :get-show="() => true" clearable />
               </n-form-item>
 
               <n-form-item label="Durée" path="duration">
@@ -70,7 +93,7 @@ function onButtonPressed(e: Event) {
             </n-space>
 
             <n-form-item label="Thème" path="theme">
-              <n-input v-model:value="impro.theme" type="textarea" :autosize="{ minRows: 1, maxRows: 5 }" placeholder="ex: Caucus sur le cactus" />
+              <n-input v-model:value="impro.theme" clearable type="textarea" :autosize="{ minRows: 1, maxRows: 5 }" placeholder="ex: Caucus sur le cactus" />
             </n-form-item>
 
             <n-button type="primary" @click="onButtonPressed">

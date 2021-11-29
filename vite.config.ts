@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
   },
 });

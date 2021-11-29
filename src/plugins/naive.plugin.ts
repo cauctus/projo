@@ -25,9 +25,11 @@ import {
   NProgress,
   NAutoComplete,
   NSelect,
+  NUpload,
 } from 'naive-ui';
 
 const components = [
+  NUpload,
   NSelect,
   NAutoComplete,
   NProgress,
