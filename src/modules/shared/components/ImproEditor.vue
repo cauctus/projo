@@ -17,7 +17,7 @@ const emit = defineEmits<{ (e: 'added', i: Impro): void; (e: 'edited', i: Impro)
 const props = defineProps<{ edit: boolean }>();
 
 const impro = ref<Impro>(defaultImpro);
-const formRef = ref(null);
+const formRef = ref<{ validate: (cb: (errors: string[]) => void) => void }>();
 
 const rules = Object.keys(defaultImpro).reduce((acc, key) => {
   acc[key] = {
