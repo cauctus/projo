@@ -20,8 +20,11 @@ const onRemove = (i: number) => {
       </n-space>
 
       <n-card title="Création" class="raised content-no-padding">
-        Cette page permet de créer et générer les impros pour l'arbitrage d'un match d'impro. Une fois la liste d'impro créée, il est possible de l'exporter pour l'arbitrage (ou pour le modifier plus
-        tard en le réimportant).
+        <p>
+          Cette page permet de créer et générer les impros pour l'arbitrage d'un match d'impro. Une fois la liste d'impro créée, il est possible de l'exporter pour l'arbitrage (ou pour le modifier
+          plus tard en le réimportant).
+        </p>
+        <p>Actuellement cette page n'est pas adaptée pour l'utilisation sur mobile.</p>
       </n-card>
       <br />
       <n-grid cols="5" x-gap="12">

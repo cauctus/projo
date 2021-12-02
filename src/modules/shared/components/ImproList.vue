@@ -71,7 +71,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
       </n-space>
     </n-space>
     <br />
-    <n-empty v-if="props.impros.length === 0" description="Ajoutez une impro grace au formulaire sur la droite">
+    <n-empty v-if="props.impros.length === 0" description="Ajoutez une impro grace au formulaire sur la droite" size="large" style="margin: 50px 0">
       <template #icon>
         <n-icon><TheaterComedyRound /></n-icon>
       </template>
