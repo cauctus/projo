@@ -42,12 +42,18 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tab
               </n-button>
             </div>
 
-            <router-link to="/controls" #="{ navigate, href }" custom>
-              <n-button color="#fc466b" style="color: white" tag="a" :href="href" type="success" @click="navigate">
-                Commencer &nbsp;
-                <n-icon><ArrowRight /></n-icon>
-              </n-button>
-            </router-link>
+            <n-space>
+              <router-link to="/create" #="{ navigate, href }" custom>
+                <n-button secondary style="color: #333" tag="a" :href="href" @click="navigate"> Créer des impros </n-button>
+              </router-link>
+
+              <router-link to="/controls" #="{ navigate, href }" custom>
+                <n-button color="#fc466b" style="color: white" tag="a" :href="href" type="success" @click="navigate">
+                  Commencer &nbsp;
+                  <n-icon><ArrowRight /></n-icon>
+                </n-button>
+              </router-link>
+            </n-space>
           </n-space>
         </n-card>
       </n-grid-item>
