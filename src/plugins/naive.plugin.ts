@@ -26,9 +26,13 @@ import {
   NAutoComplete,
   NSelect,
   NUpload,
+  NEmpty,
+  NModal,
 } from 'naive-ui';
 
 const components = [
+  NModal,
+  NEmpty,
   NUpload,
   NSelect,
   NAutoComplete,

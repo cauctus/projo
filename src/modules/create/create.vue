@@ -4,29 +4,7 @@ import { Impro } from '@/types/Impro.model';
 import { ref } from 'vue';
 import ImproEditor from '../shared/components/ImproEditor.vue';
 
-const impros = ref<Impro[]>([
-  {
-    category: 'category',
-    duration: 3 * 60 * 1000,
-    playerCount: '2 par équipe',
-    theme: 'Caucus sur le cactus',
-    type: 'Libre',
-  },
-  {
-    category: 'category',
-    duration: 3 * 60 * 1000,
-    playerCount: '2 par équipe',
-    theme: 'Caucus sur le cactus',
-    type: 'Libre',
-  },
-  {
-    category: 'category',
-    duration: 3 * 60 * 1000,
-    playerCount: '2 par équipe',
-    theme: 'Caucus sur le cactus',
-    type: 'Libre',
-  },
-]);
+const impros = ref<Impro[]>([]);
 
 const onRemove = (i: number) => {
   impros.value.splice(i, 1);
@@ -48,7 +26,9 @@ const onRemove = (i: number) => {
       <br />
       <n-grid cols="5" x-gap="12">
         <n-gi span="2">
-          <ImproEditor :edit="false" @added="(impro) => impros.push(impro)" />
+          <n-card>
+            <ImproEditor :edit="false" @added="(impro) => impros.push(impro)" />
+          </n-card>
         </n-gi>
         <n-gi span="3">
           <n-card embedded>
