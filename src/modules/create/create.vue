@@ -16,7 +16,7 @@ const onRemove = (i: number) => {
   <div class="page-wrapper">
     <div class="content-wrapper">
       <n-space align="center" justify="space-between">
-        <n-h1>Création des impro</n-h1>
+        <n-h1>Création des impros</n-h1>
       </n-space>
 
       <n-card title="Création" class="raised content-no-padding">
