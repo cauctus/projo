@@ -73,7 +73,6 @@ function createTeamStore(partialSate: Partial<Team>) {
 
   function increasePenality() {
     if (++state.penality > dashboardStore.maxPenality) {
-      state.score--;
       state.penality = 0;
     }
   }

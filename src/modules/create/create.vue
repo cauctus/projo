@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ImproPreview from '@/modules/shared/components/ImproList.vue';
+import ImproList from '@/modules/shared/components/ImproList.vue';
 import { Impro } from '@/types/Impro.model';
 import { ref } from 'vue';
 import ImproEditor from '../shared/components/ImproEditor.vue';
@@ -35,7 +35,7 @@ const onRemove = (i: number) => {
         </n-gi>
         <n-gi span="3">
           <n-card embedded>
-            <ImproPreview v-model:impros="impros" />
+            <ImproList v-model:impros="impros" />
           </n-card>
         </n-gi>
       </n-grid>

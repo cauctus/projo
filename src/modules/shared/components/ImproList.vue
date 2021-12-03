@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, withDefaults, ref } from 'vue';
 import { Impro } from '@/types/Impro.model';
-import { DeleteFilled, TheaterComedyRound, EditFilled } from '@vicons/material';
+import { DeleteFilled, TheaterComedyRound, EditFilled, PlayArrowRound } from '@vicons/material';
 import { Menu } from '@vicons/tabler';
 import { formatTime } from '@/utils/string';
 import { downloadObjectAsJson } from '@/utils/download';
@@ -11,8 +11,22 @@ import draggable from 'vuedraggable';
 import { FileExport } from '@/types/FileExport.model';
 import ImproEditor from './ImproEditor.vue';
 
-const emit = defineEmits<{ (e: 'remove', index: number): void; (e: 'update:impros', impros: Impro[]): void }>();
-const props = withDefaults(defineProps<{ impros: Impro[]; showExport?: boolean; showImport?: boolean; showClear?: boolean }>(), { showExport: true, showImport: true, showClear: true });
+const emit = defineEmits<{ (e: 'remove', index: number): void; (e: 'update:impros', impros: Impro[]): void; (e: 'loadImpro', impro: Impro): void }>();
+const props = withDefaults(
+  defineProps<{
+    impros: Impro[];
+    showExport?: boolean;
+    showImport?: boolean;
+    showClear?: boolean;
+    showLoad?: boolean;
+  }>(),
+  {
+    showLoad: false,
+    showExport: true,
+    showImport: true,
+    showClear: true,
+  }
+);
 
 const showModal = ref(false);
 const improToEdit = ref<Impro>();
@@ -41,7 +55,7 @@ function exportJson() {
     impros: props.impros,
   };
 
-  downloadObjectAsJson(content, 'impros-data.json');
+  downloadObjectAsJson(content, 'projo-impros.json');
 }
 
 async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
@@ -81,38 +95,43 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
       <template #item="{ element, index }">
         <n-card class="impro">
           <n-space align="center" justify="space-between" :wrap="false">
-            <n-space align="center" :wrap="false">
-              <n-icon size="25" class="handle"><Menu /></n-icon>
+            <n-space align="center" justify="space-between" :wrap="false" style="width: 100%" item-style="flex-grow:1">
+              <n-space align="center" :wrap="false" size="large">
+                <n-icon size="25" class="handle"><Menu /></n-icon>
 
-              <div>
-                <div class="info"><span>Type:</span> {{ element.type }}</div>
-                <div class="info"><span>Categorie:</span> {{ element.category }}</div>
-              </div>
+                <div>
+                  <div class="info"><span>Type:</span> {{ element.type }}</div>
+                  <div class="info"><span>Categorie:</span> {{ element.category }}</div>
+                  <div class="info"><span>Nb. personnes:</span> {{ element.playerCount }}</div>
+                  <div class="info"><span>Durée: </span> {{ formatTime(element.duration) }}</div>
+                </div>
+              </n-space>
             </n-space>
 
-            <div>
-              <div class="info"><span>Nb. personnes:</span> {{ element.playerCount }}</div>
-              <div class="info"><span>Durée: </span> {{ formatTime(element.duration) }}</div>
-            </div>
+            <n-space align="center" justify="center" size="large">
+              <n-space align="end" justify="center" vertical :size="0">
+                <div class="info"><span>Theme</span></div>
+                <div class="accent">{{ element.theme }}</div>
+              </n-space>
 
-            <n-space align="center" justify="center" vertical :size="0">
-              <div class="info"><span>Theme</span></div>
-              <div class="accent">{{ element.theme }}</div>
-            </n-space>
+              <n-space class="actions" align="center" justify="center">
+                <n-popconfirm positive-text="Supprimer" negative-text="Annuler" @positive-click="() => remove(index)">
+                  <template #trigger>
+                    <n-button color="#a2a2a2cc" class="delete" text style="font-size: 24px">
+                      <n-icon><DeleteFilled /></n-icon>
+                    </n-button>
+                  </template>
+                  Êtes-vous sûr·e·s de vouloir supprimer cette impro ?
+                </n-popconfirm>
 
-            <n-space class="actions" align="center" justify="center">
-              <n-popconfirm positive-text="Supprimer" negative-text="Annuler" @positive-click="() => remove(index)">
-                <template #trigger>
-                  <n-button class="delete" text style="font-size: 24px">
-                    <n-icon><DeleteFilled /></n-icon>
-                  </n-button>
-                </template>
-                Êtes-vous sûr·e·s de vouloir supprimer cette impro ?
-              </n-popconfirm>
+                <n-button color="#a2a2a2cc" text style="font-size: 24px" @click="editImpro(element)">
+                  <n-icon><EditFilled /></n-icon>
+                </n-button>
 
-              <n-button text style="font-size: 24px" @click="editImpro(element)">
-                <n-icon><EditFilled /></n-icon>
-              </n-button>
+                <n-button v-if="props.showLoad" text style="font-size: 50px" type="success" @click="emit('loadImpro', element)">
+                  <n-icon><PlayArrowRound /></n-icon>
+                </n-button>
+              </n-space>
             </n-space>
           </n-space>
         </n-card>
@@ -150,6 +169,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
     }
 
     .info {
+      line-height: 1.1;
       span {
         color: #a2a2a2cc;
         line-height: 1;
@@ -165,8 +185,6 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
       padding-left: 10px;
 
       .n-button {
-        color: #a2a2a2cc;
-
         &:hover {
           color: gray;
         }

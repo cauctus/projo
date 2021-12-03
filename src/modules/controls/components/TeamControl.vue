@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { Team } from '@/types/Team.model';
-import { defineProps, computed } from 'vue';
+import { defineProps, defineEmits, computed } from 'vue';
 import { ArrowDown, ArrowUp, ArrowLeft, ArrowRight } from '@vicons/tabler';
 
 const props = defineProps<{ team: Team; maxPenality: number; iconsLeft?: boolean }>();
+const emit = defineEmits(['applyPenality']);
 
 const hasMaxPenality = computed(() => props.team.penality === props.maxPenality);
+
+function applyPenality() {
+  props.team.increasePenality();
+  emit('applyPenality');
+}
 </script>
 
 <template>
@@ -38,7 +44,7 @@ const hasMaxPenality = computed(() => props.team.penality === props.maxPenality)
           <n-icon><ArrowLeft /></n-icon>
         </template>
       </n-button>
-      <n-button v-if="hasMaxPenality" size="large" ghost round @click="props.team.increasePenality"> Penalité = 0 & Score -1 </n-button>
+      <n-button v-if="hasMaxPenality" size="large" round @click="applyPenality"> Appliquer </n-button>
       <n-button v-else size="large" ghost circle @click="props.team.increasePenality">
         <template #icon>
           <n-icon><ArrowRight /></n-icon>

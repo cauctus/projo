@@ -11,12 +11,20 @@ import CategoryAutoComplete from '../shared/components/CategoryAutoComplete.vue'
 import TypeAutoComplete from '../shared/components/TypeAutoComplete.vue';
 import PlayerCountComplete from '../shared/components/PlayerCountComplete.vue';
 import { currentMillisToUTCMillis, utcMillisToCurrentMillis } from '@/utils/date';
+import ImproList from '@/modules/shared/components/ImproList.vue';
+import { Impro } from '@/types/Impro.model';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
 const controlsStore = useControlsStore();
 
-const eventTypes = ["Match d'improvisation"];
+function loadImpro(impro: Impro) {
+  dashboardStore.playerCount = impro.playerCount;
+  dashboardStore.category = impro.category;
+  dashboardStore.timer.setDuration(impro.duration);
+  dashboardStore.theme = impro.theme;
+  dashboardStore.type = impro.type;
+}
 </script>
 
 <template>
@@ -138,10 +146,12 @@ const eventTypes = ["Match d'improvisation"];
       <!-- <n-card class="raised"> -->
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
-          <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" />
+          <n-space vertical justify="center" style="height: 100%">
+            <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" @apply-penality="dashboardStore.teamRight.increaseScore" />
+          </n-space>
         </n-gi>
         <n-gi span="3">
-          <n-space item-style="width: 100%" vertical>
+          <n-space item-style="width: 100%" vertical style="height: 100%" justify="center">
             <HorizontalTimer v-show="dashboardStore.displayGlobalTimer" class="raised" :timer="dashboardStore.globalTimer" />
             <EditableTimer class="raised" :timer="dashboardStore.timer" />
 
@@ -172,13 +182,20 @@ const eventTypes = ["Match d'improvisation"];
           </n-space>
         </n-gi>
         <n-gi span="2">
-          <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" />
+          <n-space vertical justify="center" style="height: 100%">
+            <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" @apply-penality="dashboardStore.teamLeft.increaseScore" />
+          </n-space>
         </n-gi>
       </n-grid>
 
       <br />
-      <n-grid :cols="4" x-gap="12">
-        <n-gi :span="2" :offset="1" />
+      <n-grid :cols="5" x-gap="12">
+        <n-gi :span="3" :offset="1">
+          <n-card embedded class="raised">
+            <ImproList v-model:impros="controlsStore.impros" show-load @load-impro="loadImpro" />
+          </n-card>
+        </n-gi>
+        <n-gi :span="2" />
       </n-grid>
 
       <!-- </n-card> -->
