@@ -192,7 +192,7 @@ function loadImpro(impro: Impro) {
       <n-grid :cols="5" x-gap="12">
         <n-gi :span="3" :offset="1">
           <n-card embedded class="raised">
-            <ImproList v-model:impros="controlsStore.impros" show-load @load-impro="loadImpro" />
+            <ImproList v-model:impros="controlsStore.impros" show-load placeholder="Créer un liste d'impro sur /create" @load-impro="loadImpro" />
           </n-card>
         </n-gi>
         <n-gi :span="2" />
