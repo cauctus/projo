@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tabler';
+
+const version = import.meta.env.PACKAGE_VERSION;
 </script>
 
 <template>
@@ -13,7 +15,12 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tab
               <n-icon size="60" color="#fc466b"><DeviceTv /></n-icon>
               <n-h1>Projo</n-h1>
             </n-space>
-            <div class="subtitle">une solution <a href="https://cauctus.net" target="_blank">cauctus.net</a></div>
+            <n-space class="subtitle" vertical align="end" :size="0">
+              <div>
+                version <a href="https://github.com/cauctus/projo" target="_blank">v{{ version }}</a>
+              </div>
+              <div>une solution <a href="https://cauctus.net" target="_blank">cauctus.net</a></div>
+            </n-space>
           </n-space>
 
           <div class="content">
@@ -25,22 +32,22 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tab
           </div>
 
           <n-space class="footer" align="center" justify="space-between">
-            <div>
+            <n-space align="center" :size="10">
               <router-link to="/about" #="{ navigate, href }" custom>
-                <n-button text style="font-size: 30px; margin-right: 10px" tag="a" :href="href" ghost class="muted" @click="navigate">
+                <n-button text style="font-size: 30px" tag="a" :href="href" ghost class="muted" @click="navigate">
                   <n-icon><InfoSquare /></n-icon>
                 </n-button>
               </router-link>
               <!-- <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="/about" class="muted">
                 <n-icon><InfoSquare /></n-icon>
               </n-button> -->
-              <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="mailto:projo@cauctus.net" class="muted">
+              <n-button text style="font-size: 30px" tag="a" href="mailto:projo@cauctus.net" class="muted">
                 <n-icon><Mail /></n-icon>
               </n-button>
-              <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="https://github.com/cauctus/projo" target="_blank" class="muted">
+              <n-button text style="font-size: 30px" tag="a" href="https://github.com/cauctus/projo" target="_blank" class="muted">
                 <n-icon><BrandGithub /></n-icon>
               </n-button>
-            </div>
+            </n-space>
 
             <n-space>
               <router-link to="/create" #="{ navigate, href }" custom>
@@ -100,6 +107,10 @@ import { BrandGithub, ArrowRight, Mail, DeviceTv, InfoSquare } from '@vicons/tab
 
     .muted {
       color: #a2a2a2cc;
+
+      a:hover {
+        color: #fc466b;
+      }
     }
 
     .subtitle {
