@@ -1,15 +1,10 @@
 <script lang="ts" setup>
 import ImproList from '@/modules/shared/components/ImproList.vue';
-import { Impro } from '@/types/Impro.model';
-import { ref } from 'vue';
 import ImproEditor from '../shared/components/ImproEditor.vue';
+import {useCreateStore} from './create.store';
 
-const impros = ref<Impro[]>([]);
+const store = useCreateStore()
 
-const onRemove = (i: number) => {
-  impros.value.splice(i, 1);
-  console.log({ impros, i });
-};
 </script>
 
 <template>
@@ -26,16 +21,16 @@ const onRemove = (i: number) => {
         </p>
         <p>Actuellement cette page n'est pas adaptée pour l'utilisation sur mobile.</p>
       </n-card>
-      <br />
+      <br>
       <n-grid cols="5" x-gap="12">
         <n-gi span="2">
           <n-card>
-            <ImproEditor :edit="false" @added="(impro) => impros.push(impro)" />
+            <ImproEditor :edit="false" @added="(impro) => store.impros.push(impro)" />
           </n-card>
         </n-gi>
         <n-gi span="3">
           <n-card embedded>
-            <ImproList v-model:impros="impros" />
+            <ImproList v-model:impros="store.impros" />
           </n-card>
         </n-gi>
       </n-grid>
