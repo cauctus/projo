@@ -1,4 +1,3 @@
-import { Timer } from '@/types/Timers.model';
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from '/src/pages/index.vue';
 import Dashboard from '@/modules/dashboard/dashboard.vue';

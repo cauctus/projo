@@ -39,13 +39,25 @@ function applyPenality() {
       <div v-for="index in props.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
     </n-space>
     <n-space justify="center">
-      <n-button size="large" ghost circle :disabled="props.team.penality === 0" @click="props.team.decreasePenality">
+      <n-button
+        size="large"
+        ghost
+        circle
+        :disabled="props.team.penality === 0"
+        @click="props.team.decreasePenality"
+      >
         <template #icon>
           <n-icon><ArrowLeft /></n-icon>
         </template>
       </n-button>
       <n-button v-if="hasMaxPenality" size="large" round @click="applyPenality"> Appliquer </n-button>
-      <n-button v-else size="large" ghost circle @click="props.team.increasePenality">
+      <n-button
+        v-else
+        size="large"
+        ghost
+        circle
+        @click="props.team.increasePenality"
+      >
         <template #icon>
           <n-icon><ArrowRight /></n-icon>
         </template>

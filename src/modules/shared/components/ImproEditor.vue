@@ -70,7 +70,14 @@ function onButtonPressed(e: Event) {
 <template>
   <div>
     <n-space item-style="width: 100%" vertical>
-      <n-form ref="formRef" :model="impro" label-placement="top" size="large" :rules="rules" :show-require-mark="false">
+      <n-form
+        ref="formRef"
+        :model="impro"
+        label-placement="top"
+        size="large"
+        :rules="rules"
+        :show-require-mark="false"
+      >
         <div style="padding: 20px">
           <n-space item-style="flex-grow: 1; padding:0" :wrap="false">
             <n-form-item label="Type d'impro" path="type">
@@ -87,12 +94,24 @@ function onButtonPressed(e: Event) {
             </n-form-item>
 
             <n-form-item label="Durée" path="duration">
-              <n-time-picker v-model:value="impro.duration" style="width: 100%" :actions="['confirm']" format="mm'm' ss's'" :seconds="Array.from(Array(4), (_, i) => i * 15)" />
+              <n-time-picker
+                v-model:value="impro.duration"
+                style="width: 100%"
+                :actions="['confirm']"
+                format="mm'm' ss's'"
+                :seconds="Array.from(Array(4), (_, i) => i * 15)"
+              />
             </n-form-item>
           </n-space>
 
           <n-form-item label="Thème" path="theme">
-            <n-input v-model:value="impro.theme" clearable type="textarea" :autosize="{ minRows: 1, maxRows: 5 }" placeholder="ex: Caucus sur le cactus" />
+            <n-input
+              v-model:value="impro.theme"
+              clearable
+              type="textarea"
+              :autosize="{ minRows: 1, maxRows: 5 }"
+              placeholder="ex: Caucus sur le cactus"
+            />
           </n-form-item>
 
           <n-button type="primary" @click="onButtonPressed">

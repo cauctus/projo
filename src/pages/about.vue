@@ -6,10 +6,18 @@
           <n-h1>A propos</n-h1>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aspernatur adipisci iste quis similique cupiditate at esse eveniet, ea recusandae fuga, totam, mollitia consequatur sed sequi
           magni necessitatibus quas quam.
-          <br />
-          <br />
+          <br>
+          <br>
           <router-link to="/" #="{ navigate, href }" custom>
-            <n-button tag="a" :href="href" type="success" ghost @click="navigate"> Back Home </n-button>
+            <n-button
+              tag="a"
+              :href="href"
+              type="success"
+              ghost
+              @click="navigate"
+            >
+              Back Home
+            </n-button>
           </router-link>
         </n-card>
       </n-grid-item>

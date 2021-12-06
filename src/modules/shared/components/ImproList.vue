@@ -86,7 +86,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
         <n-button v-if="props.showExport" type="primary" :disabled="props.impros.length === 0" @click="exportJson">Exporter</n-button>
       </n-space>
     </n-space>
-    <br />
+    <br>
     <n-empty v-if="props.impros.length === 0" :description="props.placeholder" size="large" style="margin: 50px 0">
       <template #icon>
         <n-icon><TheaterComedyRound /></n-icon>
@@ -97,7 +97,13 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
       <template #item="{ element, index }">
         <n-card class="impro">
           <n-space align="center" justify="space-between" :wrap="false">
-            <n-space align="center" justify="space-between" :wrap="false" style="width: 100%" item-style="flex-grow:1">
+            <n-space
+              align="center"
+              justify="space-between"
+              :wrap="false"
+              style="width: 100%"
+              item-style="flex-grow:1"
+            >
               <n-space align="center" :wrap="false" size="large">
                 <n-icon size="25" class="handle"><Menu /></n-icon>
 
@@ -130,7 +136,13 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
                   <n-icon><EditFilled /></n-icon>
                 </n-button>
 
-                <n-button v-if="props.showLoad" text style="font-size: 50px" type="success" @click="emit('loadImpro', element)">
+                <n-button
+                  v-if="props.showLoad"
+                  text
+                  style="font-size: 50px"
+                  type="success"
+                  @click="emit('loadImpro', element)"
+                >
                   <n-icon><PlayArrowRound /></n-icon>
                 </n-button>
               </n-space>

@@ -13,7 +13,13 @@ const props = defineProps<{ timer: Timer }>();
       <n-space vertical style="padding-right: 10px">
         <div class="timer-title">Timer actuel</div>
 
-        <n-time-picker :value="props.timer.duration" :on-update:value="props.timer.setDuration" :actions="['confirm']" format="mm'm' ss's'" :seconds="Array.from(Array(4), (_, i) => i * 15)" />
+        <n-time-picker
+          :value="props.timer.duration"
+          :on-update:value="props.timer.setDuration"
+          :actions="['confirm']"
+          format="mm'm' ss's'"
+          :seconds="Array.from(Array(4), (_, i) => i * 15)"
+        />
       </n-space>
 
       <div style="text-align: center">

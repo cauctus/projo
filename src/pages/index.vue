@@ -26,36 +26,72 @@ const version = import.meta.env.PACKAGE_VERSION;
           <div class="content">
             Projo est une application web simple d'utilisation pour la gestion des scores pour le théatre d'improvisation. Pas besoin de compte ou d'installation pour utiliser cette apllication, tout
             se passe dans le navigateur.
-            <br />
-            <br />
+            <br>
+            <br>
             Application opensource codée avec <n-text type="error">♥</n-text> par <a href="https://github.com/CorentinTh" target="_blank">Corentin Thomasset</a>.
           </div>
 
           <n-space class="footer" align="center" justify="space-between">
             <n-space align="center" :size="10">
               <router-link to="/about" #="{ navigate, href }" custom>
-                <n-button text style="font-size: 30px" tag="a" :href="href" ghost class="muted" @click="navigate">
+                <n-button
+                  text
+                  style="font-size: 30px"
+                  tag="a"
+                  :href="href"
+                  ghost
+                  class="muted"
+                  @click="navigate"
+                >
                   <n-icon><InfoSquare /></n-icon>
                 </n-button>
               </router-link>
               <!-- <n-button text style="font-size: 30px; margin-right: 10px" tag="a" href="/about" class="muted">
                 <n-icon><InfoSquare /></n-icon>
               </n-button> -->
-              <n-button text style="font-size: 30px" tag="a" href="mailto:projo@cauctus.net" class="muted">
+              <n-button
+                text
+                style="font-size: 30px"
+                tag="a"
+                href="mailto:projo@cauctus.net"
+                class="muted"
+              >
                 <n-icon><Mail /></n-icon>
               </n-button>
-              <n-button text style="font-size: 30px" tag="a" href="https://github.com/cauctus/projo" target="_blank" class="muted">
+              <n-button
+                text
+                style="font-size: 30px"
+                tag="a"
+                href="https://github.com/cauctus/projo"
+                target="_blank"
+                class="muted"
+              >
                 <n-icon><BrandGithub /></n-icon>
               </n-button>
             </n-space>
 
             <n-space>
               <router-link to="/create" #="{ navigate, href }" custom>
-                <n-button secondary style="color: #333" tag="a" :href="href" @click="navigate"> Créer des impros </n-button>
+                <n-button
+                  secondary
+                  style="color: #333"
+                  tag="a"
+                  :href="href"
+                  @click="navigate"
+                >
+                  Créer des impros
+                </n-button>
               </router-link>
 
               <router-link to="/controls" #="{ navigate, href }" custom>
-                <n-button color="#fc466b" style="color: white" tag="a" :href="href" type="success" @click="navigate">
+                <n-button
+                  color="#fc466b"
+                  style="color: white"
+                  tag="a"
+                  :href="href"
+                  type="success"
+                  @click="navigate"
+                >
                   Commencer &nbsp;
                   <n-icon><ArrowRight /></n-icon>
                 </n-button>

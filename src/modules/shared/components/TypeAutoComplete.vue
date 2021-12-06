@@ -7,7 +7,13 @@ const types = ['Mixte', 'Comparée', 'Fusillade', 'Mitraillette'].map((label) =>
 </script>
 
 <template>
-  <n-select :options="types" :value="props.value" :on-update:value="(value: string) => emit('update:value', value)" placeholder="ex: Western" filterable />
+  <n-select
+    :options="types"
+    :value="props.value"
+    :on-update:value="(value: string) => emit('update:value', value)"
+    placeholder="ex: Western"
+    filterable
+  />
 </template>
 
 <style lang="less" scoped>

@@ -43,7 +43,14 @@ const props = defineProps<{ timer: Timer }>();
       </div>
     </n-space>
 
-    <n-progress :border-radius="0" class="progress" type="line" :percentage="(props.timer.elapsed / props.timer.duration) * 100" indicator-placement="inside-label" color="#888" />
+    <n-progress
+      :border-radius="0"
+      class="progress"
+      type="line"
+      :percentage="(props.timer.elapsed / props.timer.duration) * 100"
+      indicator-placement="inside-label"
+      color="#888"
+    />
   </n-card>
 </template>
 

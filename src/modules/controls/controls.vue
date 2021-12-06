@@ -91,13 +91,31 @@ function loadImpro(impro: Impro) {
                   <n-grid :cols="3">
                     <n-gi :span="2">
                       <n-form-item label="Zoom du dashboard">
-                        <n-slider v-model:value="dashboardStore.zoom" :step="0.05" :min="0" :max="2" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                        <n-slider
+                          v-model:value="dashboardStore.zoom"
+                          :step="0.05"
+                          :min="0"
+                          :max="2"
+                          :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`"
+                        />
                       </n-form-item>
                       <n-form-item label="Décalage horizontal">
-                        <n-slider v-model:value="dashboardStore.offsetX" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                        <n-slider
+                          v-model:value="dashboardStore.offsetX"
+                          :step="0.05"
+                          :min="-1"
+                          :max="1"
+                          :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`"
+                        />
                       </n-form-item>
                       <n-form-item label="Décalage vertical">
-                        <n-slider v-model:value="dashboardStore.offsetY" :step="0.05" :min="-1" :max="1" :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`" />
+                        <n-slider
+                          v-model:value="dashboardStore.offsetY"
+                          :step="0.05"
+                          :min="-1"
+                          :max="1"
+                          :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`"
+                        />
                       </n-form-item>
                     </n-gi>
                     <n-gi>
@@ -142,7 +160,7 @@ function loadImpro(impro: Impro) {
           </n-card>
         </n-collapse-transition>
       </n-card>
-      <br />
+      <br>
       <!-- <n-card class="raised"> -->
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
@@ -174,7 +192,13 @@ function loadImpro(impro: Impro) {
 
                 <n-card embedded title="Thème">
                   <n-form-item :show-label="false">
-                    <n-input v-model:value="dashboardStore.theme" size="large" type="textarea" :autosize="{ minRows: 1, maxRows: 5 }" placeholder="ex: Caucus sur le cactus" />
+                    <n-input
+                      v-model:value="dashboardStore.theme"
+                      size="large"
+                      type="textarea"
+                      :autosize="{ minRows: 1, maxRows: 5 }"
+                      placeholder="ex: Caucus sur le cactus"
+                    />
                   </n-form-item>
                 </n-card>
               </n-form>
@@ -183,12 +207,18 @@ function loadImpro(impro: Impro) {
         </n-gi>
         <n-gi span="2">
           <n-space vertical justify="center" style="height: 100%">
-            <TeamControl :team="dashboardStore.teamRight" :max-penality="dashboardStore.maxPenality" icons-left class="raised" @apply-penality="dashboardStore.teamLeft.increaseScore" />
+            <TeamControl
+              :team="dashboardStore.teamRight"
+              :max-penality="dashboardStore.maxPenality"
+              icons-left
+              class="raised"
+              @apply-penality="dashboardStore.teamLeft.increaseScore"
+            />
           </n-space>
         </n-gi>
       </n-grid>
 
-      <br />
+      <br>
       <n-grid :cols="5" x-gap="12">
         <n-gi :span="3" :offset="1">
           <n-card embedded class="raised">
