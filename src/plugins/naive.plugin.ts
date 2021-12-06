@@ -28,9 +28,11 @@ import {
   NUpload,
   NEmpty,
   NModal,
+  NTooltip,
 } from 'naive-ui';
 
 const components = [
+  NTooltip,
   NModal,
   NEmpty,
   NUpload,
