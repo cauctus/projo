@@ -6,7 +6,7 @@ const emit = defineEmits<{ (e: 'update:value', id: string): void }>();
 const options = computed(() => {
   const parsed = parseInt(props.value);
 
-  return [...(isNaN(parsed) ? [] : [`${parsed} par équipes`, `${parsed} personnes maximum`]), 'Illimité'];
+  return [...(isNaN(parsed) ? [] : [`${parsed} par équipes`, `${parsed} personnes maximum`]), 'Illimité', 'Toustes'];
 });
 </script>
 
