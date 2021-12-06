@@ -73,10 +73,9 @@ function loadImpro(impro: Impro) {
                     <n-time-picker
                       :value="currentMillisToUTCMillis(dashboardStore.globalTimer.duration)"
                       :on-update:value="(value: number) => dashboardStore.globalTimer.duration = utcMillisToCurrentMillis(value)"
-                      placeholder="ex: Le match des petits"
                       :actions="['confirm']"
                       format="H'h' mm'm'"
-                      :minutes="Array.from(Array(6), (_, i) => i * 10)"
+                      :minutes="Array.from(Array(12), (_, i) => i * 5)"
                       :disabled="!dashboardStore.displayGlobalTimer"
                     />
                     <span v-show="!dashboardStore.displayGlobalTimer" class="muted"> &nbsp;&nbsp; Le timer global est desactivé</span>
