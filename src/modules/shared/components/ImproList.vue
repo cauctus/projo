@@ -48,14 +48,18 @@ function updateImpros(impros: Impro[]) {
   emit('update:impros', impros);
 }
 
-function exportJson() {
-  const content: FileExport = {
+function getFileExport() : FileExport{
+  return {
     name: 'projo export',
     version: 1, // increment if format changes
     projoVersion: import.meta.env.PACKAGE_VERSION,
     description: "Fichier utilisé pour l'import de configuration de match d'improvisation",
     impros: props.impros,
   };
+}
+
+function exportJson() {
+  const content = getFileExport()
 
   downloadObjectAsJson(content, 'projo-impros.json');
 }
@@ -66,6 +70,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
     updateImpros([...props.impros, ...impros]);
   }
 }
+
 </script>
 <template>
   <div class="list-wrapper">

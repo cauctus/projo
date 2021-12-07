@@ -1,5 +1,9 @@
+export function getJSONDataUrl(obj: unknown) {
+  return `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(obj))}`;
+}
+
 export function downloadObjectAsJson(exportObj: unknown, fileName = 'file.json') {
-  const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(exportObj))}`;
+  const dataStr = getJSONDataUrl(exportObj);
   const downloadAnchorNode = document.createElement('a');
 
   downloadAnchorNode.setAttribute('href', dataStr);
