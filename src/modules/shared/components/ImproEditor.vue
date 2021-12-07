@@ -98,7 +98,6 @@ function onButtonPressed(e: Event) {
               style="width: 100%"
               :actions="['confirm']"
               format="mm'm' ss's'"
-              :seconds="Array.from(Array(4), (_, i) => i * 15)"
             />
           </n-form-item>
         </n-space>

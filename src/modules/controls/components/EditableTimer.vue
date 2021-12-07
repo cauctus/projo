@@ -18,7 +18,6 @@ const props = defineProps<{ timer: Timer }>();
           :on-update:value="props.timer.setDuration"
           :actions="['confirm']"
           format="mm'm' ss's'"
-          :seconds="Array.from(Array(4), (_, i) => i * 15)"
         />
       </n-space>
 
