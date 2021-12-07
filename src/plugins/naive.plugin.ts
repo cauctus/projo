@@ -29,9 +29,11 @@ import {
   NEmpty,
   NModal,
   NTooltip,
+  NAlert,
 } from 'naive-ui';
 
 const components = [
+  NAlert,
   NTooltip,
   NModal,
   NEmpty,

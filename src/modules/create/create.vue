@@ -26,6 +26,9 @@ const closed = ref(false)
           Cette page permet de créer et générer les impros pour l'arbitrage d'un match d'impro. Une fois la liste d'impro créée, il est possible de l'exporter pour l'arbitrage (ou pour le modifier
           plus tard en le réimportant).
         </p>
+        <n-alert title="Sauvegardez" type="warning">
+          La liste des impros est sauvegardée localement, mais dans le doute sauveragrdez entre vos sessions d'écriture en utilisant le fichier d'export/import.
+        </n-alert>
       </n-card>
       <br>
       <n-grid
