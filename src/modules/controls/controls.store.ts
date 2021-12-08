@@ -6,5 +6,6 @@ export const useControlsStore = defineStore('controls', {
   state: () => ({
     lockConfiguration: !import.meta.env.PROD,
     impros: [] as Impro[],
+    useImproList: true,
   }),
 });

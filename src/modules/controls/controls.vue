@@ -80,8 +80,8 @@ function loadImpro(impro: Impro) {
                     />
                     <span v-show="!dashboardStore.displayGlobalTimer" class="muted"> &nbsp;&nbsp; Le timer global est desactivé</span>
                   </n-form-item>
-                  <n-form-item label="Nombre de pénalités max">
-                    <n-input-number v-model:value="dashboardStore.maxPenality" type="text" placeholder="ex: 3" :min="0" />
+                  <n-form-item label="Utiliser une liste d'impros">
+                    <n-switch v-model:value="controlsStore.useImproList" />
                   </n-form-item>
                 </n-form>
               </n-collapse-item>
@@ -239,7 +239,7 @@ function loadImpro(impro: Impro) {
       </n-grid>
 
       <br>
-      <n-grid :cols="5" x-gap="12">
+      <n-grid v-show="controlsStore.useImproList" :cols="5" x-gap="12">
         <n-gi :span="3" :offset="1">
           <n-card embedded class="raised">
             <ImproList v-model:impros="controlsStore.impros" show-load placeholder="Créer un liste d'impro sur /create" @load-impro="loadImpro" />
