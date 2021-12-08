@@ -3,10 +3,10 @@ import { Team } from '@/types/Team.model';
 import { defineProps, defineEmits, computed } from 'vue';
 import { ArrowDown, ArrowUp, ArrowLeft, ArrowRight } from '@vicons/tabler';
 
-const props = defineProps<{ team: Team; maxPenality: number; iconsLeft?: boolean }>();
+const props = defineProps<{ team: Team; iconsLeft?: boolean }>();
 const emit = defineEmits(['applyPenality']);
 
-const hasMaxPenality = computed(() => props.team.penality === props.maxPenality);
+const hasMaxPenality = computed(() => props.team.penality ===  props.team.maxPenality);
 
 function applyPenality() {
   props.team.increasePenality();
@@ -36,7 +36,7 @@ function applyPenality() {
       <!-- <div>Score</div> -->
     </n-space>
     <n-space class="penalities-wrapper" justify="space-around" align="center">
-      <div v-for="index in props.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
+      <div v-for="index in props.team.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
     </n-space>
     <n-space justify="center">
       <n-button

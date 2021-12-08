@@ -3,6 +3,7 @@ export interface Team {
   color: string;
   score: number;
   penality: number;
+  maxPenality: number;
 
   increasePenality(): void;
   decreasePenality(): void;

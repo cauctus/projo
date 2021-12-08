@@ -139,6 +139,15 @@ function loadImpro(impro: Impro) {
                       <n-form-item label="Nom de l'équipe">
                         <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
                       </n-form-item>
+                      <n-form-item label="Nombre de pénalités max">
+                        <n-input-number
+                          v-model:value="dashboardStore.teamLeft.maxPenality"
+                          style="width: 100%"
+                          type="text"
+                          placeholder="ex: 3"
+                          :min="1"
+                        />
+                      </n-form-item>
                       <n-form-item label="Couleur l'équipe">
                         <color-picker v-model:value="dashboardStore.teamLeft.color" />
                       </n-form-item>
@@ -147,6 +156,15 @@ function loadImpro(impro: Impro) {
                       <strong>Equipe 2</strong>
                       <n-form-item label="Nom de l'équipe">
                         <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
+                      </n-form-item>
+                      <n-form-item label="Nombre de pénalités max">
+                        <n-input-number
+                          v-model:value="dashboardStore.teamRight.maxPenality"
+                          style="width: 100%"
+                          type="text"
+                          placeholder="ex: 3"
+                          :min="1"
+                        />
                       </n-form-item>
                       <n-form-item label="Couleur l'équipe">
                         <color-picker v-model:value="dashboardStore.teamRight.color" />
@@ -164,7 +182,11 @@ function loadImpro(impro: Impro) {
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
           <n-space vertical justify="center" style="height: 100%">
-            <TeamControl :team="dashboardStore.teamLeft" :max-penality="dashboardStore.maxPenality" class="raised" @apply-penality="dashboardStore.teamRight.increaseScore" />
+            <TeamControl 
+              :team="dashboardStore.teamLeft" 
+              class="raised"
+              @apply-penality="dashboardStore.teamRight.increaseScore"
+            />
           </n-space>
         </n-gi>
         <n-gi span="3">
@@ -208,7 +230,6 @@ function loadImpro(impro: Impro) {
           <n-space vertical justify="center" style="height: 100%">
             <TeamControl
               :team="dashboardStore.teamRight"
-              :max-penality="dashboardStore.maxPenality"
               icons-left
               class="raised"
               @apply-penality="dashboardStore.teamLeft.increaseScore"

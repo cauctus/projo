@@ -5,7 +5,7 @@
         <n-space v-if="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
         <n-space class="teams-wrapper" justify="space-between" align="center" :wrap="false">
-          <team-info :team="store.teamLeft" :max-penality="store.maxPenality" />
+          <team-info :team="store.teamLeft" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
             <div v-if="store.displayGlobalTimer" class="timer global-timer">
@@ -16,7 +16,7 @@
               {{ formatTimer(store.timer) }}
             </div>
           </n-space>
-          <team-info :team="store.teamRight" :max-penality="store.maxPenality" />
+          <team-info :team="store.teamRight" />
         </n-space>
 
         <div v-if="store.displayFooter" class="footer">

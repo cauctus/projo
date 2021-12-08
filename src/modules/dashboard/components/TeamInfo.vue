@@ -2,7 +2,7 @@
 import { Team } from '@/types/Team.model';
 import { defineProps } from 'vue';
 
-const props = defineProps<{ team: Team; maxPenality: number }>();
+const props = defineProps<{ team: Team; }>();
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const props = defineProps<{ team: Team; maxPenality: number }>();
     </div>
     <n-space class="score" justify="center">{{ props.team.score }}</n-space>
     <n-space class="penalities-wrapper" justify="space-around" align="center" wrap>
-      <div v-for="index in props.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
+      <div v-for="index in props.team.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
     </n-space>
   </div>
 </template>

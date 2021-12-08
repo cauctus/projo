@@ -64,15 +64,14 @@ function createTeamStore(partialSate: Partial<Team>) {
         color: '#ff0000',
         score: 0,
         penality: 0,
+        maxPenality: 3,
       },
       partialSate
     )
   );
 
-  const dashboardStore = useDashboardStore();
-
   function increasePenality() {
-    if (++state.penality > dashboardStore.maxPenality) {
+    if (++state.penality > state.maxPenality) {
       state.penality = 0;
     }
   }
@@ -98,7 +97,6 @@ export const useDashboardStore = defineStore('dashboard', {
     teamRight: createTeamStore({ name: 'Equipe 2', color: colors[2] }),
     globalTimer: createTimerStore({ duration: 90 * 60 * 1000 }),
     timer: createTimerStore({ duration: 3 * 60 * 1000 }),
-    maxPenality: 3,
     category: 'Libre',
     theme: 'Caucus sur le cactus',
     playerCount: 'Illimité',
