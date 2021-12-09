@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import { PauseRound, PlayArrowRound, StopRound } from '@vicons/material';
 import { Timer, TimerSate } from '@/types/Timers.model';
 import { formatTimer } from '@/utils/string';
 
+const duration = ref(3 * 60 * 1000); 
 const props = defineProps<{ timer: Timer }>();
 </script>
 
@@ -14,11 +15,14 @@ const props = defineProps<{ timer: Timer }>();
         <div class="timer-title">Timer actuel</div>
 
         <n-time-picker
-          :value="props.timer.duration"
-          :on-update:value="props.timer.setDuration"
+          v-model:value="duration"
           :actions="['confirm']"
           format="mm'm' ss's'"
         />
+        <n-space justify="space-between">
+          <n-button size="small" tertiary @click="duration /= 2">÷ 2</n-button>
+          <n-button size="small" type="primary" @click="props.timer.setDuration(duration), props.timer.stop()">Appliquer</n-button>
+        </n-space>
       </n-space>
 
       <div style="text-align: center">
@@ -36,7 +40,12 @@ const props = defineProps<{ timer: Timer }>();
       </div>
 
       <div class="controls">
-        <n-button v-show="props.timer.state !== TimerSate.RUNNING" circle color="#aaa" @click="props.timer.start">
+        <n-button
+          v-show="props.timer.state !== TimerSate.RUNNING"
+          circle
+          type="primary"
+          @click="props.timer.start"
+        >
           <n-icon size="23"><PlayArrowRound /></n-icon>
         </n-button>
         <span v-show="props.timer.state === TimerSate.RUNNING">
@@ -46,7 +55,7 @@ const props = defineProps<{ timer: Timer }>();
         </span>
         &nbsp;
         <span v-show="props.timer.state !== TimerSate.STOPPED">
-          <n-button circle color="#aaa" @click="props.timer.stop">
+          <n-button circle type="error" @click="props.timer.stop">
             <n-icon size="23"><StopRound /></n-icon>
           </n-button>
         </span>
