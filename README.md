@@ -26,6 +26,11 @@ Then start the dev server
 npm run dev
 ```
 
+## Deploy
+
+This project is continuously deployed using netlify.
+The preview url for the dev branch : https://dev--projo-cauctus.netlify.app/
+
 ## Credits
 
 Coded with ❤️ by [Corentin Thomasset](https://github.com/CorentinTh).
