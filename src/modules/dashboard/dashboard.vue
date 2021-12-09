@@ -2,33 +2,41 @@
   <n-config-provider :theme="darkTheme">
     <div class="fullpage-centered">
       <n-card class="main-card" :bordered="false" content-style="padding: 0;">
-        <n-space v-if="store.displayHeader" class="header" justify="center" align="center">{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
+        <n-space
+          v-if="store.displayHeader"
+          class="header"
+          justify="center"
+          align="center"
+        >{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
 
         <n-space class="teams-wrapper" justify="space-between" align="center" :wrap="false">
           <team-info :team="store.teamLeft" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
-            <div v-if="store.displayGlobalTimer" class="timer global-timer">
-              {{ formatTimer(store.globalTimer, { showHours: true }) }}
-            </div>
+            <div
+              v-if="store.displayGlobalTimer"
+              class="timer global-timer"
+            >{{ formatTimer(store.globalTimer, { showHours: true }) }}</div>
 
-            <div class="timer current-timer">
-              {{ formatTimer(store.timer) }}
-            </div>
+            <div class="timer current-timer">{{ formatTimer(store.timer) }}</div>
           </n-space>
           <team-info :team="store.teamRight" />
         </n-space>
 
         <div v-if="store.displayFooter" class="footer">
           <div class="footer-left">
-            <div><span>Type :</span> {{ store.type }}</div>
-            <div><span>Catégorie :</span> {{ store.category }}</div>
+            <div>
+              <span>Type :</span>
+              {{ store.type }}
+            </div>
+            <div>
+              <span>Catégorie :</span>
+              {{ store.category }}
+            </div>
           </div>
           <div class="footer-center">
             <div class="footer-center-head">Thème</div>
-            <div class="footer-center-theme">
-              {{ store.theme }}
-            </div>
+            <div class="footer-center-theme">{{ store.theme }}</div>
           </div>
           <div class="footer-right">
             <div>Nb. de personnes :</div>
@@ -37,6 +45,10 @@
           </div>
         </div>
       </n-card>
+
+      <div v-show="store.overlay.displayed">
+        <Overlay :content="store.overlay.content" />
+      </div>
     </div>
   </n-config-provider>
 </template>
@@ -45,6 +57,7 @@
 import { useEventStore } from '@/stores/event.store';
 import { useDashboardStore } from '@/stores/dashboard.store';
 import TeamInfo from './components/TeamInfo.vue';
+import Overlay from './components/Overlay.vue';
 import { darkTheme } from 'naive-ui';
 import { formatTimer } from '@/utils/string';
 
@@ -63,16 +76,29 @@ const eventStore = useEventStore();
   align-items: center;
   box-sizing: border-box;
   background-color: #101014;
+  overflow: hidden;
 }
+
+// .scale-wrapper {
+//   transform: scale(v-bind("store.zoom"))
+//     translate(
+//       calc(v-bind("store.offsetX") * 100vw),
+//       calc(v-bind("store.offsetY") * 100vh)
+//     );
+// }
 
 .main-card {
   border-radius: 10px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   width: 1520px;
   flex: 0 0 auto;
   // transform: translate(v-bind('store.offsetX'), v-bind('store.offsetY')) scale(v-bind('store.zoom'));
-  transform: scale(v-bind('store.zoom')) translate(calc(v-bind('store.offsetX') * 100vw), calc(v-bind('store.offsetY') * 100vh));
-
+  transform: scale(v-bind("store.zoom"))
+    translate(
+      calc(v-bind("store.offsetX") * 100vw),
+      calc(v-bind("store.offsetY") * 100vh)
+    );
   .header {
     padding: 20px 0 12px;
     border-bottom: @hr;
@@ -123,7 +149,8 @@ const eventStore = useEventStore();
         font-size: 110px;
         background-color: #2a2a30;
         padding: 25px 40px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
 
       .global-timer {

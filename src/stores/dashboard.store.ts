@@ -107,5 +107,9 @@ export const useDashboardStore = defineStore('dashboard', {
     displayHeader: true,
     displayGlobalTimer: true,
     displayFooter: true,
+    overlay: {
+      displayed: true,
+      content: '# ',
+    },
   }),
 });

@@ -207,6 +207,34 @@ function loadImpro(impro: Impro) {
         </n-collapse-transition>
       </n-card>
       <br />
+
+      <n-card title="Overlay" class="raised" :segmented="!controlsStore.lockOverlay">
+        <template #header-extra>
+          <n-switch v-model:value="controlsStore.lockOverlay">
+            <template #checked>
+              <n-icon>
+                <Lock />
+              </n-icon>
+            </template>
+          </n-switch>
+        </template>
+
+        <n-collapse-transition :show="!controlsStore.lockOverlay">
+          <n-form label-width="200" label-placement="left">
+            <n-form-item label="Afficher l'overlay">
+              <n-switch v-model:value="dashboardStore.overlay.displayed" />
+            </n-form-item>
+            <n-form-item label="Contenu">
+              <n-input
+                v-model:value="dashboardStore.overlay.content"
+                type="textarea"
+                placeholder="Contenu"
+              />
+            </n-form-item>
+          </n-form>
+        </n-collapse-transition>
+      </n-card>
+      <br />
       <!-- <n-card class="raised"> -->
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
