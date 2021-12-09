@@ -33,27 +33,37 @@ function loadImpro(impro: Impro) {
       <n-space align="center" justify="space-between">
         <n-h1>Controls</n-h1>
         <div>
-          <n-popconfirm positive-text="Reset" negative-text="Annuler" @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]">
+          <n-popconfirm
+            positive-text="Reset"
+            negative-text="Annuler"
+            @positive-click="() => [dashboardStore.$reset(), eventStore.$reset(), controlsStore.$reset()]"
+          >
             <template #trigger>
               <n-button>Reset</n-button>
             </template>
             Êtes-vous sûr·e·s de vouloir reset toutes la valeures par default ?
-          </n-popconfirm>
-          &nbsp;
-
+          </n-popconfirm>&nbsp;
           <router-link to="/dashboard" #="{ navigate, href }" custom>
             <n-button tag="a" :href="href" type="success" target="_blank">
               Ouvrir le dashboard &nbsp;
-              <n-icon><ArrowUpRight /></n-icon>
+              <n-icon>
+                <ArrowUpRight />
+              </n-icon>
             </n-button>
           </router-link>
         </div>
       </n-space>
-      <n-card title="Configuration générale" class="raised content-no-padding" :segmented="!controlsStore.lockConfiguration">
+      <n-card
+        title="Configuration générale"
+        class="raised content-no-padding"
+        :segmented="!controlsStore.lockConfiguration"
+      >
         <template #header-extra>
           <n-switch v-model:value="controlsStore.lockConfiguration">
             <template #checked>
-              <n-icon><Lock /></n-icon>
+              <n-icon>
+                <Lock />
+              </n-icon>
             </template>
           </n-switch>
         </template>
@@ -64,10 +74,18 @@ function loadImpro(impro: Impro) {
               <n-collapse-item title="Événement" name="1">
                 <n-form label-width="200" label-placement="left">
                   <n-form-item label="Type d'évenement">
-                    <n-input v-model:value="eventStore.type" type="text" placeholder="ex: Match d'improvisation" />
+                    <n-input
+                      v-model:value="eventStore.type"
+                      type="text"
+                      placeholder="ex: Match d'improvisation"
+                    />
                   </n-form-item>
                   <n-form-item label="Nom de l'evenement">
-                    <n-input v-model:value="eventStore.name" type="text" placeholder="ex: Le match des petits" />
+                    <n-input
+                      v-model:value="eventStore.name"
+                      type="text"
+                      placeholder="ex: Le match des petits"
+                    />
                   </n-form-item>
                   <n-form-item label="Durée totale de l'evenement">
                     <n-time-picker
@@ -78,7 +96,10 @@ function loadImpro(impro: Impro) {
                       :minutes="Array.from(Array(12), (_, i) => i * 5)"
                       :disabled="!dashboardStore.displayGlobalTimer"
                     />
-                    <span v-show="!dashboardStore.displayGlobalTimer" class="muted"> &nbsp;&nbsp; Le timer global est desactivé</span>
+                    <span
+                      v-show="!dashboardStore.displayGlobalTimer"
+                      class="muted"
+                    >&nbsp;&nbsp; Le timer global est desactivé</span>
                   </n-form-item>
                   <n-form-item label="Utiliser une liste d'impros">
                     <n-switch v-model:value="controlsStore.useImproList" />
@@ -137,7 +158,11 @@ function loadImpro(impro: Impro) {
                     <n-gi>
                       <strong>Equipe 1</strong>
                       <n-form-item label="Nom de l'équipe">
-                        <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
+                        <n-input
+                          v-model:value="dashboardStore.teamLeft.name"
+                          type="text"
+                          placeholder="ex: TTI"
+                        />
                       </n-form-item>
                       <n-form-item label="Nombre de pénalités max">
                         <n-input-number
@@ -155,7 +180,11 @@ function loadImpro(impro: Impro) {
                     <n-gi>
                       <strong>Equipe 2</strong>
                       <n-form-item label="Nom de l'équipe">
-                        <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
+                        <n-input
+                          v-model:value="dashboardStore.teamRight.name"
+                          type="text"
+                          placeholder="ex: TTI"
+                        />
                       </n-form-item>
                       <n-form-item label="Nombre de pénalités max">
                         <n-input-number
@@ -177,13 +206,13 @@ function loadImpro(impro: Impro) {
           </n-card>
         </n-collapse-transition>
       </n-card>
-      <br>
+      <br />
       <!-- <n-card class="raised"> -->
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
           <n-space vertical justify="center" style="height: 100%">
-            <TeamControl 
-              :team="dashboardStore.teamLeft" 
+            <TeamControl
+              :team="dashboardStore.teamLeft"
               class="raised"
               @apply-penality="dashboardStore.teamRight.increaseScore"
             />
@@ -191,7 +220,11 @@ function loadImpro(impro: Impro) {
         </n-gi>
         <n-gi span="3">
           <n-space item-style="width: 100%" vertical style="height: 100%" justify="center">
-            <HorizontalTimer v-show="dashboardStore.displayGlobalTimer" class="raised" :timer="dashboardStore.globalTimer" />
+            <HorizontalTimer
+              v-show="dashboardStore.displayGlobalTimer"
+              class="raised"
+              :timer="dashboardStore.globalTimer"
+            />
             <EditableTimer class="raised" :timer="dashboardStore.timer" />
 
             <n-card class="raised content-no-padding">
@@ -238,11 +271,18 @@ function loadImpro(impro: Impro) {
         </n-gi>
       </n-grid>
 
-      <br>
-      <n-grid v-show="controlsStore.useImproList" :cols="5" x-gap="12">
-        <n-gi :span="3" :offset="1">
+      <br />
+      <n-grid v-show="controlsStore.useImproList" :cols="8" x-gap="12">
+        <n-gi :span="6" :offset="1">
           <n-card embedded class="raised">
-            <ImproList v-model:impros="controlsStore.impros" show-load placeholder="Créer un liste d'impro sur /create" @load-impro="loadImpro" />
+            <ImproList
+              v-model:impros="controlsStore.impros"
+              show-load
+              show-archive
+              show-create
+              placeholder="Créer un liste d'impro sur /create"
+              @load-impro="loadImpro"
+            />
           </n-card>
         </n-gi>
         <n-gi :span="2" />

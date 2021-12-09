@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ImproList from '@/modules/shared/components/ImproList.vue';
 import ImproEditor from '../shared/components/ImproEditor.vue';
-import {useCreateStore} from './create.store';
+import { useCreateStore } from './create.store';
 import { ref } from 'vue';
 
 const store = useCreateStore()
@@ -26,18 +26,13 @@ const closed = ref(false)
           Cette page permet de créer et générer les impros pour l'arbitrage d'un match d'impro. Une fois la liste d'impro créée, il est possible de l'exporter pour l'arbitrage (ou pour le modifier
           plus tard en le réimportant).
         </p>
-        <n-alert title="Sauvegardez" type="warning">
-          La liste des impros est sauvegardée localement, mais dans le doute sauveragrdez entre vos sessions d'écriture en utilisant le fichier d'export/import.
-        </n-alert>
+        <n-alert
+          title="Sauvegardez"
+          type="warning"
+        >La liste des impros est sauvegardée localement, mais dans le doute sauveragrdez entre vos sessions d'écriture en utilisant le fichier d'export/import.</n-alert>
       </n-card>
-      <br>
-      <n-grid
-        cols="5"
-        x-gap="12"
-        y-gap="12"
-        item-responsive
-        responsive="screen"
-      >
+      <br />
+      <n-grid cols="5" x-gap="12" y-gap="12" item-responsive responsive="screen">
         <n-gi span="5 s:2">
           <n-card>
             <ImproEditor :edit="false" @added="(impro) => store.impros.push(impro)" />
@@ -45,7 +40,7 @@ const closed = ref(false)
         </n-gi>
         <n-gi span="5 s:3">
           <n-card embedded>
-            <ImproList v-model:impros="store.impros" />
+            <ImproList v-model:impros="store.impros" :show-create="false" />
           </n-card>
         </n-gi>
       </n-grid>

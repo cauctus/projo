@@ -4,4 +4,5 @@ export interface Impro {
   type: string;
   playerCount: string;
   theme: string;
+  description?: string
 }
