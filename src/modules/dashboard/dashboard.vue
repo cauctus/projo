@@ -109,9 +109,8 @@ const eventStore = useEventStore();
   .footer {
     border-top: @hr;
     padding: 50px;
-    color: hsla(0, 0%, 100%, 0.5);
+    color: hsla(0, 0%, 100%, 0.8);
     line-height: 1;
-    font-size: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
