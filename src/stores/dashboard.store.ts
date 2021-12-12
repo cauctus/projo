@@ -107,9 +107,10 @@ export const useDashboardStore = defineStore('dashboard', {
     displayHeader: true,
     displayGlobalTimer: true,
     displayFooter: true,
+    displayPenality: true,
     overlay: {
       displayed: true,
-      content: '# ',
+      content: "# Match d'impro",
     },
   }),
 });

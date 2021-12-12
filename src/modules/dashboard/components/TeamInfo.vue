@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useDashboardStore } from '@/stores/dashboard.store';
 import { Team } from '@/types/Team.model';
 import { defineProps } from 'vue';
+
+const dashboardStore = useDashboardStore()
 
 const props = defineProps<{ team: Team; }>();
 </script>
@@ -11,8 +14,19 @@ const props = defineProps<{ team: Team; }>();
       <n-h1>{{ props.team.name }}</n-h1>
     </div>
     <n-space class="score" justify="center">{{ props.team.score }}</n-space>
-    <n-space class="penalities-wrapper" justify="space-around" align="center" wrap>
-      <div v-for="index in props.team.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
+    <n-space
+      v-if="dashboardStore.displayPenality"
+      class="penalities-wrapper"
+      justify="space-around"
+      align="center"
+      wrap
+    >
+      <div
+        v-for="index in props.team.maxPenality"
+        :key="index"
+        class="penality"
+        :class="{ active: index <= props.team.penality }"
+      />
     </n-space>
   </div>
 </template>
@@ -22,7 +36,8 @@ const props = defineProps<{ team: Team; }>();
   width: 100%;
   z-index: 40;
   background-color: #1f1f24;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding-bottom: 30px;
   border-radius: 10px;
   text-align: center;
@@ -54,7 +69,7 @@ const props = defineProps<{ team: Team; }>();
     align-items: center;
     justify-content: center;
     padding: 5px 20px;
-    background-color: v-bind('props.team.color');
+    background-color: v-bind("props.team.color");
 
     .n-h1 {
       line-height: 1;

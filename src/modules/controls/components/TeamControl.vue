@@ -2,11 +2,14 @@
 import { Team } from '@/types/Team.model';
 import { defineProps, defineEmits, computed } from 'vue';
 import { ArrowDown, ArrowUp, ArrowLeft, ArrowRight } from '@vicons/tabler';
+import { useDashboardStore } from '@/stores/dashboard.store';
 
 const props = defineProps<{ team: Team; iconsLeft?: boolean }>();
 const emit = defineEmits(['applyPenality']);
 
-const hasMaxPenality = computed(() => props.team.penality ===  props.team.maxPenality);
+const hasMaxPenality = computed(() => props.team.penality === props.team.maxPenality);
+const dashboardStore = useDashboardStore()
+
 
 function applyPenality() {
   props.team.increasePenality();
@@ -22,12 +25,16 @@ function applyPenality() {
         <n-space vertical>
           <n-button size="large" ghost circle @click="props.team.increaseScore">
             <template #icon>
-              <n-icon><ArrowUp /></n-icon>
+              <n-icon>
+                <ArrowUp />
+              </n-icon>
             </template>
           </n-button>
           <n-button size="large" ghost circle @click="props.team.decreaseScore">
             <template #icon>
-              <n-icon><ArrowDown /></n-icon>
+              <n-icon>
+                <ArrowDown />
+              </n-icon>
             </template>
           </n-button>
         </n-space>
@@ -35,34 +42,39 @@ function applyPenality() {
       </n-space>
       <!-- <div>Score</div> -->
     </n-space>
-    <n-space class="penalities-wrapper" justify="space-around" align="center">
-      <div v-for="index in props.team.maxPenality" :key="index" class="penality" :class="{ active: index <= props.team.penality }" />
-    </n-space>
-    <n-space justify="center">
-      <n-button
-        size="large"
-        ghost
-        circle
-        :disabled="props.team.penality === 0"
-        @click="props.team.decreasePenality"
-      >
-        <template #icon>
-          <n-icon><ArrowLeft /></n-icon>
-        </template>
-      </n-button>
-      <n-button v-if="hasMaxPenality" size="large" round @click="applyPenality"> Appliquer </n-button>
-      <n-button
-        v-else
-        size="large"
-        ghost
-        circle
-        @click="props.team.increasePenality"
-      >
-        <template #icon>
-          <n-icon><ArrowRight /></n-icon>
-        </template>
-      </n-button>
-    </n-space>
+    <div v-if="dashboardStore.displayPenality">
+      <n-space class="penalities-wrapper" justify="space-around" align="center">
+        <div
+          v-for="index in props.team.maxPenality"
+          :key="index"
+          class="penality"
+          :class="{ active: index <= props.team.penality }"
+        />
+      </n-space>
+      <n-space justify="center">
+        <n-button
+          size="large"
+          ghost
+          circle
+          :disabled="props.team.penality === 0"
+          @click="props.team.decreasePenality"
+        >
+          <template #icon>
+            <n-icon>
+              <ArrowLeft />
+            </n-icon>
+          </template>
+        </n-button>
+        <n-button v-if="hasMaxPenality" size="large" round @click="applyPenality">Appliquer</n-button>
+        <n-button v-else size="large" ghost circle @click="props.team.increasePenality">
+          <template #icon>
+            <n-icon>
+              <ArrowRight />
+            </n-icon>
+          </template>
+        </n-button>
+      </n-space>
+    </div>
   </n-card>
 </template>
 
@@ -71,7 +83,7 @@ function applyPenality() {
   overflow: hidden;
   border-radius: 10px;
   ::v-deep(.n-card-header) {
-    background-color: v-bind('props.team.color');
+    background-color: v-bind("props.team.color");
     text-align: center;
     .n-card-header__main {
       color: white !important;

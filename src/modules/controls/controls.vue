@@ -104,6 +104,9 @@ function loadImpro(impro: Impro) {
                   <n-form-item label="Utiliser une liste d'impros">
                     <n-switch v-model:value="controlsStore.useImproList" />
                   </n-form-item>
+                  <n-form-item label="Utiliser les pénalités">
+                    <n-switch v-model:value="dashboardStore.displayPenality" />
+                  </n-form-item>
                 </n-form>
               </n-collapse-item>
               <n-collapse-item title="Affichage" name="2">
