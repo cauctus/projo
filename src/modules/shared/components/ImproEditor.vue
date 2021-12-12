@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Impro } from '@/types/Impro.model';
+import { Impro } from '@/models/Impro.model';
 import { ref, defineEmits, defineProps, withDefaults } from 'vue';
 import CategoryAutoComplete from '@/modules/shared/components/CategoryAutoComplete.vue';
 import TypeAutoComplete from '@/modules/shared/components/TypeAutoComplete.vue';

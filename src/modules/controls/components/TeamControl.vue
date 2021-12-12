@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Team } from '@/types/Team.model';
+import { Team } from '@/models/Team.model';
 import { defineProps, defineEmits, computed } from 'vue';
 import { ArrowDown, ArrowUp, ArrowLeft, ArrowRight } from '@vicons/tabler';
 import { useDashboardStore } from '@/stores/dashboard.store';

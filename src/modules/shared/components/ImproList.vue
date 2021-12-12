@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, withDefaults, ref, computed } from 'vue';
-import type { Impro } from '@/types/Impro.model';
+import type { Impro } from '@/models/Impro.model';
 import { TheaterComedyRound, PlusRound } from '@vicons/material';
 import { formatTime } from '@/utils/string';
 import { downloadObjectAsJson } from '@/utils/download';
 import { parseImportedImproFile } from '@/utils/upload';
 import { UploadFileInfo } from 'naive-ui';
 import draggable from 'vuedraggable';
-import { FileExport } from '@/types/FileExport.model';
+import { FileExport } from '@/models/FileExport.model';
 import ImproEditor from './ImproEditor.vue';
 import ImproListItem from './ImproListItem.vue';
 

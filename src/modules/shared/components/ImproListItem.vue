@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits, ref, withDefaults } from 'vue';
-import { Impro } from '@/types/Impro.model';
+import { Impro } from '@/models/Impro.model';
 import { DeleteFilled, FileUploadRound, EditFilled, FileDownloadRound } from '@vicons/material';
 import { Menu } from '@vicons/tabler';
 import { formatTime } from '@/utils/string';

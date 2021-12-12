@@ -12,7 +12,7 @@ import TypeAutoComplete from '../shared/components/TypeAutoComplete.vue';
 import PlayerCountComplete from '../shared/components/PlayerCountComplete.vue';
 import { currentMillisToUTCMillis, utcMillisToCurrentMillis } from '@/utils/date';
 import ImproList from '@/modules/shared/components/ImproList.vue';
-import { Impro } from '@/types/Impro.model';
+import { Impro } from '@/models/Impro.model';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();

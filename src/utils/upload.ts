@@ -1,4 +1,4 @@
-import { Impro } from './../types/Impro.model';
+import { Impro } from '../models/Impro.model';
 export function readFile(file: Blob) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue';
 import { PauseRound, PlayArrowRound, StopRound } from '@vicons/material';
-import { Timer, TimerSate } from '@/types/Timers.model';
+import { Timer, TimerSate } from '@/models/Timers.model';
 import { formatTimer } from '@/utils/string';
 
 const duration = ref(3 * 60 * 1000); 

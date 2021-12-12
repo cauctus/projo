@@ -1,4 +1,4 @@
-import { Impro } from './../../types/Impro.model';
+import { Impro } from '../../models/Impro.model';
 import { defineStore } from 'pinia';
 
 export const useControlsStore = defineStore('controls', {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDashboardStore } from '@/stores/dashboard.store';
-import { Team } from '@/types/Team.model';
+import { Team } from '@/models/Team.model';
 import { defineProps } from 'vue';
 
 const dashboardStore = useDashboardStore()

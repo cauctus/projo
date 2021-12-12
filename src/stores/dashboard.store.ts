@@ -1,5 +1,5 @@
-import { Timer, TimerSate } from '@/types/Timers.model';
-import { Team } from '@/types/Team.model';
+import { Timer, TimerSate } from '@/models/Timers.model';
+import { Team } from '@/models/Team.model';
 import { defineStore } from 'pinia';
 import { reactive, toRefs } from 'vue';
 
