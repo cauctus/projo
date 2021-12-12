@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { darkTheme } from 'naive-ui';
 import { useStyleStore } from '@/stores/style.store';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router'
+
+
+const route = useRoute()
+
+const layout = computed(() => route?.meta?.layout ?? 'div')
 
 const store = useStyleStore();
 </script>
@@ -8,7 +15,9 @@ const store = useStyleStore();
 <template>
   <n-config-provider :theme="store.isDarkMode ? darkTheme : null">
     <n-global-style />
-    <router-view />
+    <component :is="layout">
+      <router-view />
+    </component>
   </n-config-provider>
 </template>
 

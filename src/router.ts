@@ -5,41 +5,52 @@ import Controls from '@/modules/controls/controls.vue';
 import Create from '@/modules/create/create.vue';
 import NotFound from '/src/pages/404.vue';
 import About from '/src/pages/about.vue';
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Index,
-  },
-  {
-    path: '/controls',
-    name: 'Controls',
-    component: Controls,
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About,
-  },
-  {
-    path: '/create',
-    name: 'Create',
-    component: Create,
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: '404',
-    component: NotFound,
-  },
-];
+import { layouts } from '@/layouts';
 
 export const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Index,
+    },
+    {
+      path: '/controls',
+      name: 'Controls',
+      component: Controls,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+    {
+      path: '/create',
+      name: 'Create',
+      component: Create,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: NotFound,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+  ],
 });
