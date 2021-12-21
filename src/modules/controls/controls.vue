@@ -209,7 +209,7 @@ function loadImpro(impro: Impro) {
           </n-card>
         </n-collapse-transition>
       </n-card>
-      <br />
+      <br>
 
       <n-card
         title="Overlay"
@@ -243,7 +243,7 @@ function loadImpro(impro: Impro) {
           </n-card>
         </n-collapse-transition>
       </n-card>
-      <br />
+      <br>
       <!-- <n-card class="raised"> -->
       <n-grid :cols="7" x-gap="12">
         <n-gi span="2">
@@ -308,7 +308,7 @@ function loadImpro(impro: Impro) {
         </n-gi>
       </n-grid>
 
-      <br />
+      <br>
       <n-grid v-show="controlsStore.useImproList" :cols="8" x-gap="12">
         <n-gi :span="6" :offset="1">
           <n-card embedded class="raised">

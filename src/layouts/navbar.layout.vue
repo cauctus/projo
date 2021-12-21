@@ -1,13 +1,10 @@
 <script lang="ts" setup>
 import { DeviceTv } from '@vicons/tabler';
-import { darkTheme } from 'naive-ui';
-
 </script>
 
 <template>
   <div>
     <n-config-provider>
-      <!-- <n-config-provider :theme="darkTheme"> -->
       <n-card class="navbar">
         <n-space align="center" justify="center" item-style="flex-grow: 1">
           <n-space class="content-wrapper" align="center" justify="space-between">
@@ -34,7 +31,9 @@ import { darkTheme } from 'naive-ui';
                 target="_blank"
                 secondary
                 href="https://github.com/sponsors/CorentinTh"
-              >Faire un don</n-button>
+              >
+                Faire un don
+              </n-button>
             </n-space>
           </n-space>
         </n-space>

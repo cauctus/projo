@@ -79,7 +79,9 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
     <n-space class="actions" align="center" justify="space-between">
       <div
         v-show="impros.length > 0"
-      >{{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration, 0)) }}</div>
+      >
+        {{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration, 0)) }}
+      </div>
 
       <n-space>
         <n-upload v-if="props.showImport" :show-file-list="false" :on-change="uploaded">
@@ -103,14 +105,18 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
           tertiary
           :disabled="impros.length === 0"
           @click="updateImpros([...impros].reverse())"
-        >Inverser</n-button>
+        >
+          Inverser
+        </n-button>
         <n-button
           v-if="props.showExport"
           :type="props.showCreate ? 'default' : 'primary'"
           :tertiary="props.showCreate"
           :disabled="impros.length === 0"
           @click="exportJson"
-        >Exporter</n-button>
+        >
+          Exporter
+        </n-button>
         <n-button v-if="props.showCreate" type="primary" circle @click="showCreateModal = true">
           <n-icon size="large">
             <PlusRound />
@@ -118,7 +124,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
         </n-button>
       </n-space>
     </n-space>
-    <br />
+    <br>
     <n-empty
       v-if="impros.length === 0"
       :description="props.placeholder"

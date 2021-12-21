@@ -7,11 +7,11 @@ const props = defineProps<{ content: string }>()
 </script>  
 
 <template>
-    <div class="overlay">
-        <n-space justify="center" align="center" class="content-wrapper">
-            <Markdown class="markdown" :source="props.content" :breaks="true" />
-        </n-space>
-    </div>
+  <div class="overlay">
+    <n-space justify="center" align="center" class="content-wrapper">
+      <Markdown class="markdown" :source="props.content" :breaks="true" />
+    </n-space>
+  </div>
 </template>
 
 <style lang="less" scoped>

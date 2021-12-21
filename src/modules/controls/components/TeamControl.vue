@@ -66,7 +66,13 @@ function applyPenality() {
           </template>
         </n-button>
         <n-button v-if="hasMaxPenality" size="large" round @click="applyPenality">Appliquer</n-button>
-        <n-button v-else size="large" ghost circle @click="props.team.increasePenality">
+        <n-button
+          v-else
+          size="large"
+          ghost
+          circle
+          @click="props.team.increasePenality"
+        >
           <template #icon>
             <n-icon>
               <ArrowRight />

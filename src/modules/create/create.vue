@@ -29,10 +29,18 @@ const closed = ref(false)
         <n-alert
           title="Sauvegardez"
           type="warning"
-        >La liste des impros est sauvegardée localement, mais dans le doute sauveragrdez entre vos sessions d'écriture en utilisant le fichier d'export/import.</n-alert>
+        >
+          La liste des impros est sauvegardée localement, mais dans le doute sauveragrdez entre vos sessions d'écriture en utilisant le fichier d'export/import.
+        </n-alert>
       </n-card>
-      <br />
-      <n-grid cols="5" x-gap="12" y-gap="12" item-responsive responsive="screen">
+      <br>
+      <n-grid
+        cols="5"
+        x-gap="12"
+        y-gap="12"
+        item-responsive
+        responsive="screen"
+      >
         <n-gi span="5 s:2">
           <n-card>
             <ImproEditor :edit="false" @added="(impro) => store.impros.push(impro)" />

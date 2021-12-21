@@ -12,7 +12,9 @@
           class="header"
           justify="center"
           align="center"
-        >{{ eventStore.name.length ? eventStore.name : eventStore.type }}</n-space>
+        >
+          {{ eventStore.name.length ? eventStore.name : eventStore.type }}
+        </n-space>
 
         <n-space class="teams-wrapper" justify="space-between" align="center" :wrap="false">
           <team-info :team="store.teamLeft" />
@@ -21,7 +23,9 @@
             <div
               v-if="store.displayGlobalTimer"
               class="timer global-timer"
-            >{{ formatTimer(store.globalTimer, { showHours: true }) }}</div>
+            >
+              {{ formatTimer(store.globalTimer, { showHours: true }) }}
+            </div>
 
             <div class="timer current-timer">{{ formatTimer(store.timer) }}</div>
           </n-space>
