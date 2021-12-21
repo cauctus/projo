@@ -10,3 +10,7 @@ declare module '*.vue' {
 interface ImportMetaEnv {
   PACKAGE_VERSION: string;
 }
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
