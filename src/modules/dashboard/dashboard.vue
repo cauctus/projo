@@ -1,7 +1,12 @@
 <template>
   <n-config-provider :theme="darkTheme">
     <div class="fullpage-centered">
-      <n-card class="main-card" :bordered="false" content-style="padding: 0;">
+      <n-card
+        v-show="!store.overlay.displayed"
+        class="main-card scale-wrapper"
+        :bordered="false"
+        content-style="padding: 0;"
+      >
         <n-space
           v-if="store.displayHeader"
           class="header"
@@ -46,7 +51,7 @@
         </div>
       </n-card>
 
-      <div v-show="store.overlay.displayed">
+      <div v-show="store.overlay.displayed" class="scale-wrapper">
         <Overlay :content="store.overlay.content" />
       </div>
     </div>
@@ -79,13 +84,13 @@ const eventStore = useEventStore();
   overflow: hidden;
 }
 
-// .scale-wrapper {
-//   transform: scale(v-bind("store.zoom"))
-//     translate(
-//       calc(v-bind("store.offsetX") * 100vw),
-//       calc(v-bind("store.offsetY") * 100vh)
-//     );
-// }
+.scale-wrapper {
+  transform: scale(v-bind("store.zoom"))
+    translate(
+      calc(v-bind("store.offsetX") * 100vw),
+      calc(v-bind("store.offsetY") * 100vh)
+    );
+}
 
 .main-card {
   border-radius: 10px;
@@ -94,11 +99,7 @@ const eventStore = useEventStore();
   width: 1520px;
   flex: 0 0 auto;
   // transform: translate(v-bind('store.offsetX'), v-bind('store.offsetY')) scale(v-bind('store.zoom'));
-  transform: scale(v-bind("store.zoom"))
-    translate(
-      calc(v-bind("store.offsetX") * 100vw),
-      calc(v-bind("store.offsetY") * 100vh)
-    );
+
   .header {
     padding: 20px 0 12px;
     border-bottom: @hr;

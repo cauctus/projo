@@ -16,14 +16,6 @@ const props = defineProps<{ content: string }>()
 
 <style lang="less" scoped>
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #101014;
-    color: hsla(0, 0%, 100%, 0.8);
-    text-align: center;
     .content-wrapper {
         height: 100%;
     }
@@ -31,18 +23,22 @@ const props = defineProps<{ content: string }>()
     ::v-deep(.markdown) {
         padding: 50px 100px;
         background-color: #1f1f24;
+        border-radius: 10px;
+        color: hsla(0, 0%, 100%, 0.8);
+        text-align: center;
+        font-size: 50px;
 
         h1 {
             margin: 0;
-            font-size: 50px;
+            font-size: 80px;
             border-bottom: 2px solid #ffffff22;
 
             & + p {
                 margin-top: 20px;
             }
         }
-        p {
-            font-size: 25px;
+        p:last-child {
+            margin-bottom: 0;
         }
     }
 }
