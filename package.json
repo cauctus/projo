@@ -49,7 +49,7 @@
     "@vitejs/plugin-vue": "2.0.1",
     "@vue/eslint-config-typescript": "9.1.0",
     "eslint": "8.7.0",
-    "eslint-plugin-vue": "8.2.0",
+    "eslint-plugin-vue": "8.4.0",
     "less": "4.1.2",
     "naive-ui": "2.23.1",
     "plausible-tracker": "0.3.5",
