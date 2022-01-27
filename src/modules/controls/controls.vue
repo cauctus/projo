@@ -232,6 +232,8 @@ function loadImpro(impro: Impro) {
               <n-form-item label="Afficher l'overlay">
                 <n-switch v-model:value="dashboardStore.overlay.displayed" />
               </n-form-item>
+
+
               <n-form-item label="Contenu">
                 <n-input
                   v-model:value="dashboardStore.overlay.content"
@@ -240,6 +242,15 @@ function loadImpro(impro: Impro) {
                 />
               </n-form-item>
             </n-form>
+            <n-space justify="center">
+              <n-alert
+                v-if="dashboardStore.overlay.displayed"
+                title="Attention"
+                type="warning"
+              >
+                L'overlay est affiché, les modifications seront visibles par tout le monde
+              </n-alert>
+            </n-space>
           </n-card>
         </n-collapse-transition>
       </n-card>
