@@ -46,7 +46,7 @@
     "@typescript-eslint/parser": "5.8.1",
     "@vicons/material": "0.11.0",
     "@vicons/tabler": "0.11.0",
-    "@vitejs/plugin-vue": "2.0.1",
+    "@vitejs/plugin-vue": "2.1.0",
     "@vue/eslint-config-typescript": "9.1.0",
     "eslint": "8.7.0",
     "eslint-plugin-vue": "8.4.0",
