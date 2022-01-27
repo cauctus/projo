@@ -84,7 +84,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
       </div>
 
       <n-space>
-        <n-upload v-if="props.showImport" :show-file-list="false" :on-change="uploaded">
+        <n-upload v-if="props.showImport" :show-file-list="false" :on-change="uploaded" accept=".json,.json5,.jsonc">
           <n-button tertiary>Importer</n-button>
         </n-upload>
 
