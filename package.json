@@ -52,7 +52,7 @@
     "eslint-plugin-vue": "8.2.0",
     "less": "4.1.2",
     "naive-ui": "2.23.1",
-    "plausible-tracker": "0.3.4",
+    "plausible-tracker": "0.3.5",
     "standard-version": "9.3.2",
     "typescript": "4.5.4",
     "vfonts": "0.1.0",
