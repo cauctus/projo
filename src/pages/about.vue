@@ -4,21 +4,50 @@
       <n-grid-item span="10 600:8 1024:6 1280:4 2000:2" offset="0 600:1 1024:2 1280:3 2000:4" class="card-wrapper">
         <n-card class="main-card">
           <n-h1>A propos</n-h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aspernatur adipisci iste quis similique cupiditate at esse eveniet, ea recusandae fuga, totam, mollitia consequatur sed sequi
-          magni necessitatibus quas quam.
-          <br>
-          <br>
-          <router-link to="/" #="{ navigate, href }" custom>
+          <n-p>
+            Projo est une application web simple d'utilisation pour la gestion des scores pour le théatre d'improvisation. Pas besoin de compte ou d'installation pour utiliser cette apllication, tout
+            se passe dans le navigateur.
+          </n-p>
+
+          <n-p>
+            Application opensource codée avec <n-text type="error">♥</n-text> par <a href="https://github.com/CorentinTh" target="_blank">Corentin Thomasset</a>.
+          </n-p>
+
+          <n-p>
+            Fait avec <a href="https://v3.vuejs.org/" target="_blank">Vue 3</a> avec les composants <a href="https://www.naiveui.com/" target="_blank">naive-ui</a>.
+          </n-p>
+
+          <n-h2>Support</n-h2>
+          <n-p>
+            Pour supporter ce projet gratuit et open-source vous pouvez me soutenir           
+            <a
+              tag="a"
+              target="_blank"
+              href="https://github.com/sponsors/CorentinTh"
+            >en faisant un don</a>.
+          </n-p>
+
+
+          <n-space>
+            <router-link to="/" #="{ navigate, href }" custom>
+              <n-button
+                tag="a"
+                :href="href"
+                secondary
+                @click="navigate"
+              >
+                Retour
+              </n-button>
+            </router-link>
             <n-button
               tag="a"
-              :href="href"
+              target="_blank"
               type="success"
-              ghost
-              @click="navigate"
+              href="https://github.com/sponsors/CorentinTh"
             >
-              Back Home
+              Faire un don
             </n-button>
-          </router-link>
+          </n-space>
         </n-card>
       </n-grid-item>
     </n-grid>
@@ -50,5 +79,18 @@
   border: none;
   border-radius: 20px;
   padding: 40px;
+}
+
+.n-p {
+  a {
+    color: #3f5efb;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s linear;
+
+    &:hover {
+      color: #fc466b;
+    }
+  }
 }
 </style>
