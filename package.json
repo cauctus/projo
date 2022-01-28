@@ -30,7 +30,7 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@cauctus/dataset": "1.0.2",
+    "@cauctus/dataset": "1.1.0",
     "@fontsource/ubuntu": "4.5.1",
     "piesocket-js": "1.4.0",
     "pinia": "2.0.10",
