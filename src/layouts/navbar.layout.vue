@@ -26,6 +26,10 @@ import { DeviceTv } from '@vicons/tabler';
                 <n-button text tag="a" :href="href" @click="navigate">Créer des impros</n-button>
               </router-link>
 
+              <router-link to="/controls" #="{ navigate, href }" custom>
+                <n-button text tag="a" :href="href" @click="navigate">Controls</n-button>
+              </router-link>
+
               <n-button
                 tag="a"
                 target="_blank"
