@@ -30,11 +30,13 @@ import {
   NModal,
   NTooltip,
   NAlert,
-  NP, 
-  NH2
+  NP,
+  NH2,
+  NDropdown,
 } from 'naive-ui';
 
 const components = [
+  NDropdown,
   NH2,
   NP,
   NAlert,

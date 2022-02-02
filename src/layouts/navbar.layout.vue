@@ -1,5 +1,39 @@
 <script lang="ts" setup>
 import { DeviceTv } from '@vicons/tabler';
+import { useMediaQuery } from '@vueuse/core'
+import { MenuRound } from '@vicons/material'
+import { useRouter } from 'vue-router';
+
+const isMobile = useMediaQuery('(max-width: 700px)')
+const router = useRouter()
+
+const options = [
+  {
+    label: 'A propos',
+    to: '/about'
+  },
+  {
+    label: 'Créer des impros',
+    to: '/create'
+  },
+  {
+    label: 'Controls',
+    to: '/controls'
+  },
+  {
+    label: 'Faire un don',
+    to: 'https://github.com/sponsors/CorentinTh'
+  }
+]
+
+function handleSelect(key: string, { to }: { to: string }) {
+  if (to.startsWith('http')) {
+    window.open(to)
+  } else {
+    router.push(to)
+
+  }
+}
 </script>
 
 <template>
@@ -17,7 +51,17 @@ import { DeviceTv } from '@vicons/tabler';
               </n-space>
             </router-link>
 
-            <n-space align="center" :size="25">
+            <n-space v-if="isMobile" align="center">
+              <n-dropdown trigger="hover" :options="options" @select="handleSelect">
+                <n-button text style="font-size: 24px;">
+                  <n-icon>
+                    <MenuRound />
+                  </n-icon>
+                </n-button>
+              </n-dropdown>
+            </n-space>
+
+            <n-space v-else align="center" :size="25">
               <router-link to="/about" #="{ navigate, href }" custom>
                 <n-button text tag="a" :href="href" @click="navigate">A propos</n-button>
               </router-link>
@@ -35,9 +79,7 @@ import { DeviceTv } from '@vicons/tabler';
                 target="_blank"
                 secondary
                 href="https://github.com/sponsors/CorentinTh"
-              >
-                Faire un don
-              </n-button>
+              >Faire un don</n-button>
             </n-space>
           </n-space>
         </n-space>
