@@ -32,7 +32,7 @@
   "dependencies": {
     "@cauctus/dataset": "1.1.0",
     "@fontsource/ubuntu": "4.5.2",
-    "@vueuse/core": "7.6.1",
+    "@vueuse/core": "7.6.2",
     "piesocket-js": "1.4.0",
     "pinia": "2.0.11",
     "pinia-plugin-persistedstate": "1.2.2",
