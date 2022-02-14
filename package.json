@@ -43,8 +43,8 @@
     "vuedraggable": "4.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.11.0",
-    "@typescript-eslint/parser": "5.11.0",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "@typescript-eslint/parser": "5.12.0",
     "@vicons/material": "0.11.0",
     "@vicons/tabler": "0.11.0",
     "@vitejs/plugin-vue": "2.2.0",
