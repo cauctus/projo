@@ -2,6 +2,67 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.6](https://github.com/cauctus/projo/compare/v1.0.0-beta.4...v1.0.0-beta.6) (2022-03-09)
+
+
+### Features
+
+* **about:** better about page ([e5a7e0f](https://github.com/cauctus/projo/commit/e5a7e0f084a79e1dde061a14a85745112468ef67))
+* added controls button in header ([a51f140](https://github.com/cauctus/projo/commit/a51f140055f4f9b046b25c9a2f158af51da93a03))
+* added overlay base ([6e94958](https://github.com/cauctus/projo/commit/6e94958429f644e17ac4c0d963740a69c3793ef0))
+* **layout:** added top navbar ([3187a4b](https://github.com/cauctus/projo/commit/3187a4ba3853a3a62a3aaad6d4c560b6f4fd20c9))
+* **menu:** responsive menu ([fab54e0](https://github.com/cauctus/projo/commit/fab54e0dd215fe69203b5001c6c8d29dc06fd71f))
+* **overlay:** overlay now use the scale config ([f502532](https://github.com/cauctus/projo/commit/f502532289fa84f78bf66b9c7ca6fa86a98ab1aa))
+* **overlay:** warning when overlay is displayed ([5bc478c](https://github.com/cauctus/projo/commit/5bc478c397abbed301f777692777b5bc8152a17a))
+* **penalities:** penalities can be disabled ([c2b1a3d](https://github.com/cauctus/projo/commit/c2b1a3d4991471296743afc34d1c551fef1985d7))
+* **upload:** accept only json-like file ([3795326](https://github.com/cauctus/projo/commit/3795326a45e0d1e6a8dc10d1d176211565dd9136))
+
+
+### Bug Fixes
+
+* **deps:** automerge ([4e754b3](https://github.com/cauctus/projo/commit/4e754b31bd18085ba497b0e51a1342eb20eb7f93))
+* **deps:** pin dependencies ([#59](https://github.com/cauctus/projo/issues/59)) ([2045911](https://github.com/cauctus/projo/commit/20459112914e9ba3bede0199fc077d89d2f1ebb9))
+* **deps:** pin dependency @vueuse/core to 7.5.5 ([8458dcf](https://github.com/cauctus/projo/commit/8458dcf55a407c5290da3b2e5358b6424ee09efe))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.1 ([121e19f](https://github.com/cauctus/projo/commit/121e19fc028e44f4f1b532fe303d134f901bc613))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.2 ([9b73d01](https://github.com/cauctus/projo/commit/9b73d01e040f41339a2d7cdbc1e87524b6ae674f))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.3 ([70b99cb](https://github.com/cauctus/projo/commit/70b99cbcf104a6ae26755680599887eb288a0a02))
+* **deps:** update dependency @vueuse/core to v7.6.0 ([72597d7](https://github.com/cauctus/projo/commit/72597d71fbd4c22595300f7c90bd83e381dcab0d))
+* **deps:** update dependency @vueuse/core to v7.6.1 ([bebf00e](https://github.com/cauctus/projo/commit/bebf00ed2f6493befafe0dc4f09da8f70dc0803d))
+* **deps:** update dependency @vueuse/core to v7.6.2 ([1fd4955](https://github.com/cauctus/projo/commit/1fd495513efe41e416cd32f2db5888dbbd1b34df))
+* **deps:** update dependency @vueuse/core to v7.7.0 ([27a7ee4](https://github.com/cauctus/projo/commit/27a7ee4b711151a5abea9df06c5ab7f9d020a553))
+* **deps:** update dependency @vueuse/core to v7.7.1 ([9a5e89a](https://github.com/cauctus/projo/commit/9a5e89ac4c04503a8a98450c682cc2513968d518))
+* **deps:** update dependency pinia to v2.0.10 ([a947367](https://github.com/cauctus/projo/commit/a9473672bdc5518f345c5f989c67f2d8e5b14316))
+* **deps:** update dependency pinia to v2.0.11 ([63f66c8](https://github.com/cauctus/projo/commit/63f66c8f33c098feb7421f75571a92edde6953f4))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.1.0 ([1e576ad](https://github.com/cauctus/projo/commit/1e576adb72563337b52a794c63871a2a46f1f74d))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.0 ([84a8889](https://github.com/cauctus/projo/commit/84a8889c51457441e6b1ec20dd23655ac4fb51b9))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.1 ([b52cff7](https://github.com/cauctus/projo/commit/b52cff7cc27f2ef41aa25e68d58bd6d29d3851d6))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.2 ([e77c4e5](https://github.com/cauctus/projo/commit/e77c4e5351979c5b9b463d95d56cc2a456a37d4c))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.3 ([ed2c60e](https://github.com/cauctus/projo/commit/ed2c60eada39adf24bacffb828c30bb878196c70))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.3.0 ([b2186a5](https://github.com/cauctus/projo/commit/b2186a5bb8b6ff6537fd781b852861fdb9b90c3e))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.4.0 ([493357d](https://github.com/cauctus/projo/commit/493357d7a6e187d96a6ba8b8487a221cf1f9c08a))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.5.1 ([e5bc0b8](https://github.com/cauctus/projo/commit/e5bc0b8a4cd54fbece92126a9893d118b5985bac))
+* **deps:** update dependency vue to v3.2.29 ([26aecd3](https://github.com/cauctus/projo/commit/26aecd3a71cdefc25aa7e32da202735384010fd4))
+* **deps:** update dependency vue to v3.2.30 ([da5b9c8](https://github.com/cauctus/projo/commit/da5b9c891955fe5b39013322aa2e1204e4747525))
+* **deps:** update dependency vue to v3.2.31 ([6aa1fb6](https://github.com/cauctus/projo/commit/6aa1fb60d94608eab6bf8a5c5c0819441029d0ac))
+* **deps:** update dependency vue-router to v4.0.13 ([729483c](https://github.com/cauctus/projo/commit/729483c0a159ca7c914d74fdb73d8c9e3bd60731))
+* **deps:** update dependency vue3-markdown-it to v1.0.10 ([7418564](https://github.com/cauctus/projo/commit/74185640d4b25f483dfcc98f3d76a31e099ab8bd))
+* **overlay:** corrected padding and bg color ([b93d8e5](https://github.com/cauctus/projo/commit/b93d8e51f823918e726d20bc0dee859d3b4e9c61))
+* **timer:** update duration when timer changes ([a421a23](https://github.com/cauctus/projo/commit/a421a233417c8aab7ace2f041e5bf05ffef1a9a1))
+* **ts:** added type declaration for 'vue3-markdown-it' ([964eb5f](https://github.com/cauctus/projo/commit/964eb5f8340e35f6618e353e4b09bfd8ddbf40c6))
+* **types:** added ImportMeta interface ([ec7ccea](https://github.com/cauctus/projo/commit/ec7cceaabaa66ac58f5c37cd3bbe090193f07757))
+* **types:** added missing ImportMetaEnv ([bd486f3](https://github.com/cauctus/projo/commit/bd486f31391663ed6d18cb7bd81c696f07b7a264))
+
+
+### Documentation
+
+* **dev:** added dev branch preview url in readme ([6020db1](https://github.com/cauctus/projo/commit/6020db199d010f78d6515ea5a0bf3062f455fb9b))
+
+
+### Refactors
+
+* **dashboard:** increased footer brightness ([4758c9e](https://github.com/cauctus/projo/commit/4758c9e062a33e168313d812908e63ff04d8f2ef))
+* **lint:** lint auto fix ([be7a3b1](https://github.com/cauctus/projo/commit/be7a3b1a0368d4bea90204dbd514b8408e32a68e))
+
 ## [1.0.0-beta.5](https://github.com/cauctus/projo/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-02-02)
 
 
