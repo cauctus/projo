@@ -4,8 +4,11 @@ import { Impro } from '@/models/Impro.model';
 import { DeleteFilled, FileUploadRound, EditFilled, FileDownloadRound } from '@vicons/material';
 import { Menu } from '@vicons/tabler';
 import { formatTime } from '@/utils/string';
+import { useMediaQuery } from '@vueuse/core';
 
 import ImproEditor from './ImproEditor.vue';
+
+const isMobile = useMediaQuery('(max-width: 700px)')
 
 const emit = defineEmits<{
   (e: 'remove', impro: Impro): void;
@@ -53,6 +56,10 @@ function load() {
                 <span>Categorie:</span>
                 {{ props.impro.category }}
               </div>
+              <div v-if="isMobile" class="info">
+                <span>Theme:</span>
+                {{ props.impro.theme }}
+              </div>
               <div class="info">
                 <span>Nb. personnes:</span>
                 {{ props.impro.playerCount }}
@@ -65,15 +72,33 @@ function load() {
           </n-space>
         </n-space>
 
-        <n-space align="center" justify="center" size="large">
-          <n-space align="end" justify="center" vertical :size="0">
+        <n-space
+          align="center"
+          justify="center"
+          size="large"
+          :wrap="false"
+        >
+          <n-space
+            v-if="!isMobile"
+            align="end"
+            justify="center"
+            vertical
+            :size="0"
+          >
             <div class="info">
               <span>Theme</span>
             </div>
+            <!-- <div class="accent"><n-ellipsis>{{ props.impro.theme }}</n-ellipsis></div> -->
             <div class="accent">{{ props.impro.theme }}</div>
           </n-space>
 
-          <n-space class="actions" align="center" justify="center">
+          <n-space
+            class="actions"
+            align="center"
+            justify="center" 
+            :wrap="false"
+            :vertical="isMobile"
+          >
             <n-popconfirm
               positive-text="Supprimer"
               negative-text="Annuler"
@@ -143,6 +168,10 @@ function load() {
 
 <style lang="less" scoped>
 .impro-list-item {
+  &.ghost {
+    opacity: 0.8;
+    background: #c8ebfb;
+  }
   .impro {
     // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
 
@@ -156,10 +185,7 @@ function load() {
       }
     }
 
-    &.ghost {
-      opacity: 0.5;
-      background: #c8ebfb;
-    }
+
 
     .handle {
       color: #a2a2a2cc;
@@ -178,8 +204,9 @@ function load() {
       }
     }
     .accent {
-      font-size: 22px;
+      font-size: 18px;
       line-height: 1;
+      text-align: right;
     }
     .actions {
       border-left: 2px solid #a2a2a277;
