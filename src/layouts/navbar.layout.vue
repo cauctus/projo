@@ -17,6 +17,10 @@ const options = [
     to: '/create'
   },
   {
+    label: 'Les cartons',
+    to: '/boards'
+  },
+  {
     label: 'Controls',
     to: '/controls'
   },
@@ -74,12 +78,9 @@ function handleSelect(key: string, { to }: { to: string }) {
                 <n-button text tag="a" :href="href" @click="navigate">Controls</n-button>
               </router-link>
 
-              <n-button
-                tag="a"
-                target="_blank"
-                secondary
-                href="https://github.com/sponsors/CorentinTh"
-              >Faire un don</n-button>
+              <n-button tag="a" target="_blank" secondary href="https://github.com/sponsors/CorentinTh">
+                Faire un don
+              </n-button>
             </n-space>
           </n-space>
         </n-space>
@@ -95,6 +96,7 @@ function handleSelect(key: string, { to }: { to: string }) {
   border-radius: 0;
   border: none;
   border-bottom: 2px solid var(--border-color);
+
   ::v-deep(.n-card__content) {
     padding: 10px 0;
   }
