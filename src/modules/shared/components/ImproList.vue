@@ -10,6 +10,8 @@ import draggable from 'vuedraggable';
 import { FileExport } from '@/models/FileExport.model';
 import ImproEditor from './ImproEditor.vue';
 import ImproListItem from './ImproListItem.vue';
+import { useBoardStore } from '@/modules/boards/board.store';
+import { useRouter } from 'vue-router';
 
 const emit = defineEmits<{ (e: 'remove', index: number): void; (e: 'update:impros', impros: Impro[]): void; (e: 'loadImpro', impro: Impro): void }>();
 const props = withDefaults(
@@ -20,12 +22,14 @@ const props = withDefaults(
     showClear?: boolean;
     showLoad?: boolean;
     showArchive?: boolean;
+    showBoardExport?: boolean;
     showCreate?: boolean;
     placeholder?: string;
   }>(),
   {
     showLoad: false,
     showArchive: false,
+    showBoardExport: true,
     showExport: true,
     showImport: true,
     showCreate: true,
@@ -39,6 +43,8 @@ const showCreateModal = ref(false);
 const improToEdit = ref<Impro>();
 
 const impros = computed(() => props.impros)
+const boardStore = useBoardStore()
+const router = useRouter()
 
 function remove(i: number) {
   const a = [...impros.value];
@@ -73,21 +79,23 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
   }
 }
 
+function exportToBoards() {
+  boardStore.impros = [...impros.value]
+  router.push('/boards')
+}
+
 </script>
 <template>
   <div class="list-wrapper">
     <n-space class="actions" align="center" justify="space-between">
-      <div
-        v-show="impros.length > 0"
-      >{{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration, 0)) }}</div>
+      <div v-show="impros.length > 0">
+        {{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration,
+                                                                                 0))
+        }}
+      </div>
 
       <n-space>
-        <n-upload
-          v-if="props.showImport"
-          :show-file-list="false"
-          :on-change="uploaded"
-          accept=".json, .json5, .jsonc"
-        >
+        <n-upload v-if="props.showImport" :show-file-list="false" :on-change="uploaded" accept=".json, .json5, .jsonc">
           <n-button tertiary>Importer</n-button>
         </n-upload>
 
@@ -108,14 +116,24 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
           tertiary
           :disabled="impros.length === 0"
           @click="updateImpros([...impros].reverse())"
-        >Inverser</n-button>
+        >
+          Inverser
+        </n-button>
         <n-button
           v-if="props.showExport"
           :type="props.showCreate ? 'default' : 'primary'"
           :tertiary="props.showCreate"
           :disabled="impros.length === 0"
           @click="exportJson"
-        >Exporter</n-button>
+        >
+          Exporter
+        </n-button>
+
+        <n-button v-if="props.showBoardExport" type="primary" :disabled="impros.length === 0" @click="exportToBoards">
+          Exporter vers les cartons
+        </n-button>
+
+
         <n-button v-if="props.showCreate" type="primary" circle @click="showCreateModal = true">
           <n-icon size="large">
             <PlusRound />
@@ -123,13 +141,8 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
         </n-button>
       </n-space>
     </n-space>
-    <br />
-    <n-empty
-      v-if="impros.length === 0"
-      :description="props.placeholder"
-      size="large"
-      style="margin: 50px 0"
-    >
+    <br>
+    <n-empty v-if="impros.length === 0" :description="props.placeholder" size="large" style="margin: 50px 0">
       <template #icon>
         <n-icon>
           <TheaterComedyRound />
@@ -164,9 +177,7 @@ async function uploaded({ file: { file } }: { file: UploadFileInfo }) {
         <template #header>
           <div>Ajouter une impro</div>
         </template>
-        <ImproEditor
-          @added="(impro) => (updateImpros([impro, ...impros]), showCreateModal = false)"
-        />
+        <ImproEditor @added="(impro) => (updateImpros([impro, ...impros]), showCreateModal = false)" />
       </n-card>
     </n-modal>
   </div>

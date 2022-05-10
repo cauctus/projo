@@ -3,6 +3,7 @@ import Index from '/src/pages/index.vue';
 import Dashboard from '@/modules/dashboard/dashboard.vue';
 import Controls from '@/modules/controls/controls.vue';
 import Create from '@/modules/create/create.vue';
+import Boards from '@/modules/boards/board.vue';
 import NotFound from '/src/pages/404.vue';
 import About from '/src/pages/about.vue';
 import { layouts } from '@/layouts';
@@ -40,6 +41,14 @@ export const router = createRouter({
       path: '/create',
       name: 'Create',
       component: Create,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+    {
+      path: '/boards',
+      name: 'Boards',
+      component: Boards,
       meta: {
         layout: layouts.navbar,
       },
