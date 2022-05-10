@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.8](https://github.com/cauctus/projo/compare/v1.0.0-beta.5...v1.0.0-beta.8) (2022-05-10)
+
+
+### Features
+
+* board page ([da4ce78](https://github.com/cauctus/projo/commit/da4ce780695a27fae37609f681bf40ec4c8e3a6c))
+
+
+### Bug Fixes
+
+* **deps:** pin dependency @vueuse/core to 7.5.5 ([6baa641](https://github.com/cauctus/projo/commit/6baa641dc34990bae6538b025ed7a4b197263b70))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.2 ([1b7b377](https://github.com/cauctus/projo/commit/1b7b377f9f23a3357db1705b07f1cde670bce2fc))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.3 ([a74e253](https://github.com/cauctus/projo/commit/a74e253b7408b244a3fb193753c8402b5aed5908))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.4 ([acb477e](https://github.com/cauctus/projo/commit/acb477ebab5187d39d4b6cca3cbddc9e501de938))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.6 ([54e091c](https://github.com/cauctus/projo/commit/54e091c458960fb4888bc574efe215609990f31b))
+* **deps:** update dependency @fontsource/ubuntu to v4.5.9 ([2ccfe7b](https://github.com/cauctus/projo/commit/2ccfe7be6bbba276373419a9127a196443c63b23))
+* **deps:** update dependency @vueuse/core to v7.6.0 ([b955222](https://github.com/cauctus/projo/commit/b955222eba2abc4dda0a2e5a756ee052edab25c0))
+* **deps:** update dependency @vueuse/core to v7.6.1 ([8c5dfc8](https://github.com/cauctus/projo/commit/8c5dfc820d15ddd544d172cb0c4983fb36fb218d))
+* **deps:** update dependency @vueuse/core to v7.6.2 ([1b6542f](https://github.com/cauctus/projo/commit/1b6542f93a7438ac114029d8ceadb54820ff9587))
+* **deps:** update dependency @vueuse/core to v7.7.0 ([b1562a4](https://github.com/cauctus/projo/commit/b1562a41432eaa9c2992bbcb9b032088b91697d2))
+* **deps:** update dependency @vueuse/core to v7.7.1 ([88d6c39](https://github.com/cauctus/projo/commit/88d6c39efc99b85f00a1946284d39750514ca1d9))
+* **deps:** update dependency pinia to v2.0.12 ([2006323](https://github.com/cauctus/projo/commit/20063232e18e62ec874822b32a22abce657bb32a))
+* **deps:** update dependency pinia to v2.0.13 ([aa12521](https://github.com/cauctus/projo/commit/aa12521370b5c9aa2cc0dc2262958fd3624e37a4))
+* **deps:** update dependency pinia to v2.0.14 ([03f8260](https://github.com/cauctus/projo/commit/03f8260a561c03a1e4d0781d5761bc27e47befb0))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.2 ([ecfacb9](https://github.com/cauctus/projo/commit/ecfacb9dd36bf0cb2f605e843884e9becfe961cb))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.2.3 ([ae71c0c](https://github.com/cauctus/projo/commit/ae71c0c78275339b9bc6180cd2603649b9996730))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.3.0 ([020cf14](https://github.com/cauctus/projo/commit/020cf14e08eab36cb17c83dd6e693797a32510a2))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.4.0 ([b9ce44a](https://github.com/cauctus/projo/commit/b9ce44a0da88448700b16e04a3b5364c889b1f93))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.5.1 ([9e4a9df](https://github.com/cauctus/projo/commit/9e4a9dfab1b9b5f505944f52a34dd4228461a704))
+* **deps:** update dependency vue to v3.2.30 ([41218c9](https://github.com/cauctus/projo/commit/41218c9af123836c991545f8933327d2e37a41ef))
+* **deps:** update dependency vue to v3.2.31 ([811026d](https://github.com/cauctus/projo/commit/811026dd89a3f75b2a87e3b223da8516adf24da0))
+* **deps:** update dependency vue to v3.2.32 ([f062277](https://github.com/cauctus/projo/commit/f06227762e7453f85a4dbf9c77f1a16e762ac9b2))
+* **deps:** update dependency vue to v3.2.33 ([ea2dbda](https://github.com/cauctus/projo/commit/ea2dbdac214bbb0e28e4dad39825ecbd64534ae3))
+* **deps:** update dependency vue-router to v4.0.13 ([b8f2f75](https://github.com/cauctus/projo/commit/b8f2f750922ae7d30e987868fe9ac69916f1bec9))
+* **deps:** update dependency vue-router to v4.0.14 ([16087eb](https://github.com/cauctus/projo/commit/16087eb026e3c494a7e0d60a599dbc36da504911))
+* **deps:** update dependency vue-router to v4.0.15 ([eb7c75b](https://github.com/cauctus/projo/commit/eb7c75b8c6d3c601b17ddac3320365e1c5614028))
+
+
+### Refactors
+
+* **style:** responsive impro-list-item ([5dee056](https://github.com/cauctus/projo/commit/5dee05642bfdd75d27e04f81fd2cd7654a6ef4f4))
+
 ## [1.0.0-beta.7](https://github.com/cauctus/projo/compare/v1.0.0-beta.5...v1.0.0-beta.7) (2022-05-10)
 
 
