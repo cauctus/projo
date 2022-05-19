@@ -89,9 +89,7 @@ function exportToBoards() {
   <div class="list-wrapper">
     <n-space class="actions" align="center" justify="space-between">
       <div v-show="impros.length > 0">
-        {{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration,
-                                                                                 0))
-        }}
+        {{ impros.length }} impros pour une durée de {{ formatTime(impros.reduce((acc, { duration }) => acc + duration, 0), { showHours: true }) }}
       </div>
 
       <n-space>
