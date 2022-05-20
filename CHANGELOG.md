@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.10](https://github.com/cauctus/projo/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2022-05-20)
+
+
+### Bug Fixes
+
+* time picker input ([42f1b2c](https://github.com/cauctus/projo/commit/42f1b2c616ba5b8b7f65a3a71a8f00f6902b7397))
+
 ## [1.0.0-beta.9](https://github.com/cauctus/projo/compare/v1.0.0-beta.7...v1.0.0-beta.9) (2022-05-20)
 
 
