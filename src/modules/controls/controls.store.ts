@@ -8,5 +8,6 @@ export const useControlsStore = defineStore('controls', {
     lockOverlay: !import.meta.env.PROD,
     impros: [] as Impro[],
     useImproList: true,
+    inverseTeamPosition: true,
   }),
 });

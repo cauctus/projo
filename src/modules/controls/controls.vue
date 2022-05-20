@@ -32,7 +32,7 @@ function loadImpro(impro: Impro) {
     <div class="content-wrapper">
       <n-space align="center" justify="space-between">
         <n-h1>Controls</n-h1>
-        <div>
+        <div> 
           <n-popconfirm
             positive-text="Reset"
             negative-text="Annuler"
@@ -74,18 +74,10 @@ function loadImpro(impro: Impro) {
               <n-collapse-item title="Événement" name="1">
                 <n-form label-width="200" label-placement="left">
                   <n-form-item label="Type d'évenement">
-                    <n-input
-                      v-model:value="eventStore.type"
-                      type="text"
-                      placeholder="ex: Match d'improvisation"
-                    />
+                    <n-input v-model:value="eventStore.type" type="text" placeholder="ex: Match d'improvisation" />
                   </n-form-item>
                   <n-form-item label="Nom de l'evenement">
-                    <n-input
-                      v-model:value="eventStore.name"
-                      type="text"
-                      placeholder="ex: Le match des petits"
-                    />
+                    <n-input v-model:value="eventStore.name" type="text" placeholder="ex: Le match des petits" />
                   </n-form-item>
                   <n-form-item label="Durée totale de l'evenement">
                     <n-time-picker
@@ -96,10 +88,7 @@ function loadImpro(impro: Impro) {
                       :minutes="Array.from(Array(12), (_, i) => i * 5)"
                       :disabled="!dashboardStore.displayGlobalTimer"
                     />
-                    <span
-                      v-show="!dashboardStore.displayGlobalTimer"
-                      class="muted"
-                    >&nbsp;&nbsp; Le timer global est desactivé</span>
+                    <span v-show="!dashboardStore.displayGlobalTimer" class="muted">&nbsp;&nbsp; Le timer global est desactivé</span>
                   </n-form-item>
                   <n-form-item label="Utiliser une liste d'impros">
                     <n-switch v-model:value="controlsStore.useImproList" />
@@ -156,16 +145,15 @@ function loadImpro(impro: Impro) {
                 </n-form>
               </n-collapse-item>
               <n-collapse-item title="Equipes" name="3">
+                <n-form-item label="Inverser la position des équipes dans les controls par rapport au dashboard" label-placement="left">
+                  <n-switch v-model:value="controlsStore.inverseTeamPosition" />
+                </n-form-item>
                 <n-form label-width="200" label-placement="left">
                   <n-grid :cols="2" x-gap="24">
                     <n-gi>
                       <strong>Equipe 1</strong>
                       <n-form-item label="Nom de l'équipe">
-                        <n-input
-                          v-model:value="dashboardStore.teamLeft.name"
-                          type="text"
-                          placeholder="ex: TTI"
-                        />
+                        <n-input v-model:value="dashboardStore.teamLeft.name" type="text" placeholder="ex: TTI" />
                       </n-form-item>
                       <n-form-item label="Nombre de pénalités max">
                         <n-input-number
@@ -183,11 +171,7 @@ function loadImpro(impro: Impro) {
                     <n-gi>
                       <strong>Equipe 2</strong>
                       <n-form-item label="Nom de l'équipe">
-                        <n-input
-                          v-model:value="dashboardStore.teamRight.name"
-                          type="text"
-                          placeholder="ex: TTI"
-                        />
+                        <n-input v-model:value="dashboardStore.teamRight.name" type="text" placeholder="ex: TTI" />
                       </n-form-item>
                       <n-form-item label="Nombre de pénalités max">
                         <n-input-number
@@ -211,11 +195,7 @@ function loadImpro(impro: Impro) {
       </n-card>
       <br>
 
-      <n-card
-        title="Overlay"
-        class="raised content-no-padding"
-        :segmented="!controlsStore.lockOverlay"
-      >
+      <n-card title="Overlay" class="raised content-no-padding" :segmented="!controlsStore.lockOverlay">
         <template #header-extra>
           <n-switch v-model:value="controlsStore.lockOverlay">
             <template #checked>
@@ -235,19 +215,11 @@ function loadImpro(impro: Impro) {
 
 
               <n-form-item label="Contenu">
-                <n-input
-                  v-model:value="dashboardStore.overlay.content"
-                  type="textarea"
-                  placeholder="Contenu"
-                />
+                <n-input v-model:value="dashboardStore.overlay.content" type="textarea" placeholder="Contenu" />
               </n-form-item>
             </n-form>
             <n-space justify="center">
-              <n-alert
-                v-if="dashboardStore.overlay.displayed"
-                title="Attention"
-                type="warning"
-              >
+              <n-alert v-if="dashboardStore.overlay.displayed" title="Attention" type="warning">
                 L'overlay est affiché, les modifications seront visibles par tout le monde
               </n-alert>
             </n-space>
@@ -260,7 +232,7 @@ function loadImpro(impro: Impro) {
         <n-gi span="2">
           <n-space vertical justify="center" style="height: 100%">
             <TeamControl
-              :team="dashboardStore.teamLeft"
+              :team="controlsStore.inverseTeamPosition ? dashboardStore.teamRight : dashboardStore.teamLeft"
               class="raised"
               @apply-penality="dashboardStore.teamRight.increaseScore"
             />
@@ -310,7 +282,7 @@ function loadImpro(impro: Impro) {
         <n-gi span="2">
           <n-space vertical justify="center" style="height: 100%">
             <TeamControl
-              :team="dashboardStore.teamRight"
+              :team="controlsStore.inverseTeamPosition ? dashboardStore.teamLeft : dashboardStore.teamRight"
               icons-left
               class="raised"
               @apply-penality="dashboardStore.teamLeft.increaseScore"
@@ -358,15 +330,18 @@ function loadImpro(impro: Impro) {
 .n-h1 {
   margin: 0;
 }
+
 .raised {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border: none;
 }
+
 .muted {
   color: #a2a2a2cc;
 }
+
 .content-no-padding {
-  & > ::v-deep(.n-card__content) {
+  &> ::v-deep(.n-card__content) {
     padding: 0;
   }
 }
@@ -376,11 +351,14 @@ function loadImpro(impro: Impro) {
     text-align: center;
   }
 }
+
 .section-card {
   border-radius: 0;
+
   &:not(:first-child) {
     border-top: 1px solid #eee;
   }
+
   ::v-deep(.n-card__content) {
     padding: 30px;
   }

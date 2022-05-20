@@ -34,9 +34,11 @@ import {
   NH2,
   NDropdown,
   NEllipsis,
+  NDivider,
 } from 'naive-ui';
 
 const components = [
+  NDivider,
   NEllipsis,
   NDropdown,
   NH2,
