@@ -7,12 +7,7 @@
         :bordered="false"
         content-style="padding: 0;"
       >
-        <n-space
-          v-if="store.displayHeader"
-          class="header"
-          justify="center"
-          align="center"
-        >
+        <n-space v-if="store.displayHeader" class="header" justify="center" align="center">
           {{ eventStore.name.length ? eventStore.name : eventStore.type }}
         </n-space>
 
@@ -20,10 +15,7 @@
           <team-info :team="store.teamLeft" />
 
           <n-space class="middle-wrapper" vertical align="center" :wrap="false">
-            <div
-              v-if="store.displayGlobalTimer"
-              class="timer global-timer"
-            >
+            <div v-if="store.displayGlobalTimer" class="timer global-timer">
               {{ formatTimer(store.globalTimer, { showHours: true }) }}
             </div>
 
@@ -35,11 +27,11 @@
         <div v-if="store.displayFooter" class="footer">
           <div class="footer-left">
             <div>
-              <span>Type :</span>
+              <span class="item-title">Type :</span>
               {{ store.type }}
             </div>
             <div>
-              <span>Catégorie :</span>
+              <span class="item-title">Catégorie :</span>
               {{ store.category }}
             </div>
           </div>
@@ -48,7 +40,7 @@
             <div class="footer-center-theme">{{ store.theme }}</div>
           </div>
           <div class="footer-right">
-            <div>Nb. de personnes :</div>
+            <div class="item-title">Nb. de personnes :</div>
             <div>{{ store.playerCount.length ? store.playerCount : 'Illimité' }}</div>
             <!-- <div><span>Type :</span> {{ store.type }}</div> -->
           </div>
@@ -76,6 +68,7 @@ const eventStore = useEventStore();
 
 <style lang="less" scoped>
 @hr: 4px solid hsla(0, 0%, 100%, 0.12);
+
 .fullpage-centered {
   width: 100%;
   height: 100vh;
@@ -89,11 +82,8 @@ const eventStore = useEventStore();
 }
 
 .scale-wrapper {
-  transform: scale(v-bind("store.zoom"))
-    translate(
-      calc(v-bind("store.offsetX") * 100vw),
-      calc(v-bind("store.offsetY") * 100vh)
-    );
+  transform: scale(v-bind("store.zoom")) translate(calc(v-bind("store.offsetX") * 100vw),
+      calc(v-bind("store.offsetY") * 100vh));
 }
 
 .main-card {
@@ -120,10 +110,12 @@ const eventStore = useEventStore();
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    font-size: 26px;
 
     .footer-left {
       width: 25%;
     }
+
     .footer-center {
       width: 50%;
       text-align: center;
@@ -133,6 +125,7 @@ const eventStore = useEventStore();
         color: hsla(0, 0%, 100%, 0.8);
       }
     }
+
     .footer-right {
       width: 25%;
       text-align: right;
@@ -144,10 +137,12 @@ const eventStore = useEventStore();
 
     .middle-wrapper {
       z-index: 50;
+
       .timer {
         line-height: 1;
         font-family: monospace;
       }
+
       .current-timer {
         border-radius: 20px;
         font-size: 110px;
