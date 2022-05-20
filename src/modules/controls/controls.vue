@@ -87,6 +87,7 @@ function loadImpro(impro: Impro) {
                       format="H'h' mm'm'"
                       :minutes="Array.from(Array(12), (_, i) => i * 5)"
                       :disabled="!dashboardStore.displayGlobalTimer"
+                      input-readonly
                     />
                     <span v-show="!dashboardStore.displayGlobalTimer" class="muted">&nbsp;&nbsp; Le timer global est desactivé</span>
                   </n-form-item>

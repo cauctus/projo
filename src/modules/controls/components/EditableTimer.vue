@@ -21,7 +21,9 @@ watch(() => props.timer.duration, (value: number) => duration.value = value)
           v-model:value="duration"
           :actions="['confirm']"
           format="mm'm' ss's'"
+          input-readonly
         />
+
         <n-space justify="space-between">
           <n-button size="small" tertiary @click="duration /= 2">÷ 2</n-button>
           <n-button size="small" type="primary" @click="props.timer.setDuration(duration), props.timer.stop()">Appliquer</n-button>

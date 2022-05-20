@@ -97,7 +97,8 @@ function onButtonPressed(e: Event) {
               v-model:value="impro.duration"
               style="width: 100%"
               :actions="['confirm']"
-              format="mm'm' ss's'"
+              format="m'm' ss's'"
+              input-readonly
             />
           </n-form-item>
         </n-space>
