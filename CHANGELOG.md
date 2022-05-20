@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.11](https://github.com/cauctus/projo/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2022-05-20)
+
+
+### Bug Fixes
+
+* impro duration clean on import ([7519ed0](https://github.com/cauctus/projo/commit/7519ed033f10b05521810431e8e9fcda09c897e4))
+
 ## [1.0.0-beta.10](https://github.com/cauctus/projo/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2022-05-20)
 
 
