@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.9](https://github.com/cauctus/projo/compare/v1.0.0-beta.7...v1.0.0-beta.9) (2022-05-20)
+
+
+### Features
+
+* board page ([a499c5a](https://github.com/cauctus/projo/commit/a499c5ace69da4e05a9797da24540ce668c0ddf0))
+* switch team position in controls ([e2a0b64](https://github.com/cauctus/projo/commit/e2a0b64b591aadbb086d5ffde92e2fe42138eaf6))
+
+
+### Bug Fixes
+
+* **deps:** update dependency pinia to v2.0.14 ([bbe60d7](https://github.com/cauctus/projo/commit/bbe60d7958ddc22ee61010ccb95b768a0c1331a9))
+* **deps:** update dependency pinia-plugin-persistedstate to v1.5.2 ([09a3594](https://github.com/cauctus/projo/commit/09a35943903ea68fa9c8f1fac0d6316af2301bfd))
+* impro duration with hour ([c2aa501](https://github.com/cauctus/projo/commit/c2aa501ad58f4b534dfdab0971241aaf8f1dd753))
+* text size ([f4464e9](https://github.com/cauctus/projo/commit/f4464e9151ed4cb64b9fdddeb56351ef8853177c))
+
 ## [1.0.0-beta.8](https://github.com/cauctus/projo/compare/v1.0.0-beta.5...v1.0.0-beta.8) (2022-05-10)
 
 
