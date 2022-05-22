@@ -235,7 +235,7 @@ function loadImpro(impro: Impro) {
             <TeamControl
               :team="controlsStore.inverseTeamPosition ? dashboardStore.teamRight : dashboardStore.teamLeft"
               class="raised"
-              @apply-penality="dashboardStore.teamRight.increaseScore"
+              @apply-penality="(controlsStore.inverseTeamPosition ? dashboardStore.teamLeft : dashboardStore.teamRight).increaseScore"
             />
           </n-space>
         </n-gi>
@@ -286,7 +286,7 @@ function loadImpro(impro: Impro) {
               :team="controlsStore.inverseTeamPosition ? dashboardStore.teamLeft : dashboardStore.teamRight"
               icons-left
               class="raised"
-              @apply-penality="dashboardStore.teamLeft.increaseScore"
+              @apply-penality="(controlsStore.inverseTeamPosition ? dashboardStore.teamRight : dashboardStore.teamLeft).increaseScore"
             />
           </n-space>
         </n-gi>
