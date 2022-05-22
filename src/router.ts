@@ -4,6 +4,7 @@ import Dashboard from '@/modules/dashboard/dashboard.vue';
 import Controls from '@/modules/controls/controls.vue';
 import Create from '@/modules/create/create.vue';
 import Boards from '@/modules/boards/board.vue';
+import Counter from '@/modules/counter/counter.vue';
 import NotFound from '/src/pages/404.vue';
 import About from '/src/pages/about.vue';
 import { layouts } from '@/layouts';
@@ -49,6 +50,14 @@ export const router = createRouter({
       path: '/boards',
       name: 'Boards',
       component: Boards,
+      meta: {
+        layout: layouts.navbar,
+      },
+    },
+    {
+      path: '/counter',
+      name: 'Counter',
+      component: Counter,
       meta: {
         layout: layouts.navbar,
       },

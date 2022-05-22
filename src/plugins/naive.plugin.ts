@@ -35,9 +35,13 @@ import {
   NDropdown,
   NEllipsis,
   NDivider,
+  NStatistic,
+  NTime
 } from 'naive-ui';
 
 const components = [
+  NTime,
+  NStatistic,
   NDivider,
   NEllipsis,
   NDropdown,
