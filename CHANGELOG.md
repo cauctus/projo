@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.12](https://github.com/cauctus/projo/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2022-05-22)
+
+
+### Features
+
+* counter ([e542be2](https://github.com/cauctus/projo/commit/e542be2e47b2c2ddd761ec817e6edf7a6e638a6c))
+
+
+### Bug Fixes
+
+* penality when switched team ([1d1532c](https://github.com/cauctus/projo/commit/1d1532ca971e28e41ecea46a5ec051c5872d0a01))
+
 ## [1.0.0-beta.11](https://github.com/cauctus/projo/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2022-05-20)
 
 
