@@ -33,7 +33,7 @@
     "@cauctus/dataset": "1.1.0",
     "@fontsource/ubuntu": "4.5.9",
     "@vueuse/core": "7.7.1",
-    "piesocket-js": "1.4.0",
+    "piesocket-js": "2.0.3",
     "pinia": "2.0.14",
     "pinia-plugin-persistedstate": "1.5.2",
     "pinia-shared-state": "0.1.3",
