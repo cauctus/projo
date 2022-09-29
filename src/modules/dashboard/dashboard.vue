@@ -55,12 +55,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useEventStore } from '@/stores/event.store';
 import { useDashboardStore } from '@/stores/dashboard.store';
-import TeamInfo from './components/TeamInfo.vue';
-import Overlay from './components/Overlay.vue';
-import { darkTheme } from 'naive-ui';
+import { useEventStore } from '@/stores/event.store';
 import { formatTimer } from '@/utils/string';
+import { darkTheme } from 'naive-ui';
+import Overlay from './components/Overlay.vue';
+import TeamInfo from './components/TeamInfo.vue';
 
 const store = useDashboardStore();
 const eventStore = useEventStore();
@@ -110,7 +110,7 @@ const eventStore = useEventStore();
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 26px;
+    font-size: v-bind("store.footerFontSizePx");
 
     .footer-left {
       width: 25%;
@@ -121,7 +121,7 @@ const eventStore = useEventStore();
       text-align: center;
 
       .footer-center-theme {
-        font-size: 60px;
+        font-size: v-bind("store.themeFontSizePx");
         color: hsla(0, 0%, 100%, 0.8);
       }
     }

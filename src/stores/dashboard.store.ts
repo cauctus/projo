@@ -1,5 +1,5 @@
-import { Timer, TimerSate } from '@/models/Timers.model';
 import { Team } from '@/models/Team.model';
+import { Timer, TimerSate } from '@/models/Timers.model';
 import { defineStore } from 'pinia';
 import { reactive, toRefs } from 'vue';
 
@@ -14,8 +14,8 @@ function createTimerStore(partialSate: Partial<Timer>) {
         intervalId: -1,
         state: TimerSate.STOPPED,
       },
-      partialSate
-    )
+      partialSate,
+    ),
   );
 
   state.intervalId = window.setInterval(() => {
@@ -66,8 +66,8 @@ function createTeamStore(partialSate: Partial<Team>) {
         penality: 0,
         maxPenality: 3,
       },
-      partialSate
-    )
+      partialSate,
+    ),
   );
 
   function increasePenality() {
@@ -112,5 +112,11 @@ export const useDashboardStore = defineStore('dashboard', {
       displayed: true,
       content: "# Match d'impro",
     },
+    footerFontSize: 26,
+    themeFontSize: 60,
   }),
+  getters: {
+    footerFontSizePx: (state) => `${state.footerFontSize}px`,
+    themeFontSizePx: (state) => `${state.themeFontSize}px`,
+  },
 });

@@ -1,18 +1,18 @@
 <script lang="ts" setup>
+import { Impro } from '@/models/Impro.model';
+import ImproList from '@/modules/shared/components/ImproList.vue';
 import { useDashboardStore } from '@/stores/dashboard.store';
 import { useEventStore } from '@/stores/event.store';
-import { useControlsStore } from './controls.store';
-import { ArrowUpRight, Lock } from '@vicons/tabler';
-import ColorPicker from './components/ColorPicker.vue';
-import TeamControl from './components/TeamControl.vue';
-import HorizontalTimer from './components/HorizontalTimer.vue';
-import EditableTimer from './components/EditableTimer.vue';
-import CategoryAutoComplete from '../shared/components/CategoryAutoComplete.vue';
-import TypeAutoComplete from '../shared/components/TypeAutoComplete.vue';
-import PlayerCountComplete from '../shared/components/PlayerCountComplete.vue';
 import { currentMillisToUTCMillis, utcMillisToCurrentMillis } from '@/utils/date';
-import ImproList from '@/modules/shared/components/ImproList.vue';
-import { Impro } from '@/models/Impro.model';
+import { ArrowUpRight, Lock } from '@vicons/tabler';
+import CategoryAutoComplete from '../shared/components/CategoryAutoComplete.vue';
+import PlayerCountComplete from '../shared/components/PlayerCountComplete.vue';
+import TypeAutoComplete from '../shared/components/TypeAutoComplete.vue';
+import ColorPicker from './components/ColorPicker.vue';
+import EditableTimer from './components/EditableTimer.vue';
+import HorizontalTimer from './components/HorizontalTimer.vue';
+import TeamControl from './components/TeamControl.vue';
+import { useControlsStore } from './controls.store';
 
 const dashboardStore = useDashboardStore();
 const eventStore = useEventStore();
@@ -129,6 +129,13 @@ function loadImpro(impro: Impro) {
                           :max="1"
                           :format-tooltip="(v: number) => `${Math.floor(v * 100)}%`"
                         />
+                      </n-form-item>
+
+                      <n-form-item label="Taille des indications">
+                        <n-input-number v-model:value="dashboardStore.footerFontSize" style="width: 100%" />
+                      </n-form-item>
+                      <n-form-item label="Taille du thème">
+                        <n-input-number v-model:value="dashboardStore.themeFontSize" style="width: 100%" />
                       </n-form-item>
                     </n-gi>
                     <n-gi>
